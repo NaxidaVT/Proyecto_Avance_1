@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Librería</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="../styles/css/styles.css" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<header th:replace="~{layout/plantilla :: header}"/>
+    
+<section class="py-4 mb-4 bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">   
+                <button type="button" class="btn btn-primary btn-block" data-bs-toggle="modal" 
+                        data-bs-target="#agregarLibro">
+                    <i class="fas fa-plus"></i> Agregar Libro
+                </button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section>
+    <div id="agregarLibro" class="modal fade" tabindex="-1" aria-labelledby="exampleModalLabel" 
+         aria-hidden="true">
+        <div class="modal-dialog modal-md">
+            <div class="modal-content">
+                <div class="modal-header bg-info text-white">
+                    <h5 class="modal-title">Agregar Libro</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form th:action="@{/libro/guardar}" th:object="${libro}" method="POST" 
+                      class="was-validated" enctype="multipart/form-data">
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label for="titulo">Titulo</label>
+                            <input type="text" class="form-control" name="titulo" required="true"/>
+                        </div>
+                        <div class="mb-3">
+                            <label for="autor">Autor</label>
+                            <input type="text" class="form-control" name="autor" required="true"/>
+                        </div>
+                        <div class="mb-3">
+                            <label for="precio">Precio</label>
+                            <input type="number" class="form-control" name="precio" required="true"/>
+                        </div>
+                        <div class="mb-3">
+                            <label for="categoria">Categoria</label>
+                            <input type="text" class="form-control" name="categoria" required="true"/>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-primary" type="submit">Guardar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-9">
+                <div class="card">
+                    <div class="card-header">
+                        <h4>Listado de Libros</h4>
+                    </div>
+                    <div th:if="${libros != null and !libros.empty}">
+                        <table class="table table-striped table-hover">
+                            <thead class="table-dark">
+                                <tr>
+                                    <th>#</th>
+                                    <th>Titulo</th>
+                                    <th>Autor</th>
+                                    <th>Precio</th>
+                                    <th>Categoria</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr th:each="libro, contador : ${libros}">
+                                    <td th:text="${contador.count}"></td>
+                                    <td th:text="${libro.titulo}"></td>
+                                    <td th:text="${libro.autor}"></td>
+                                    <td th:text="${libro.precio}"></td>
+                                    <td th:text="${libro.categoria}"></td>
+                                    <td>
+                                        <a th:href="@{/libro/eliminar/}+${libro.id}" class="btn btn-danger">
+                                            <i class="fas fa-trash"></i> Eliminar
+                                        </a>
+                                        <a th:href="@{/libro/modificar/}+${libro.id}" class="btn btn-success">
+                                            <i class="fas fa-pencil"></i> Actualizar
+                                        </a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="text-center p-2" th:if="${libros == null or libros.empty}">
+                        <span>No hay libros registrados</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card text-center bg-success text-white mb-3">
+                    <div class="card-body">
+                        <h3>Total de Libros</h3>
+                        <h4 class="fs-2"><i class="fas fa-book"></i> [[${totalLibros}]]</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer th:replace="~{layout/plantilla :: footer}"/>
+
+<script>
+var app = new function() {
+  this.el = document.getElementById('tasks');
+
+  this.tasks = [];
+
+  this.FetchAll = function() {
+    var data = '';
+
+    if (this.tasks.length > 0) {
+      for (i = 0; i < this.tasks.length; i++) {
+        data += '<tr>';
+        data += '<td>'+(i+1)+". " + this.tasks[i] + '</td>';
+        data += '<td><button onclick="app.Edit(' + i + ')"  class="btn btn-warning">Edit</button></td>';
+        data += '<td><button onclick="app.Delete(' + i + ')"  class="btn btn-danger">Delete</button></td>';
+        data += '</tr>';
+      }
+    }
+
+    this.Count(this.tasks.length);
+    return this.el.innerHTML = data;
+  };
+
+  this.Add = function () {
+    el = document.getElementById('add-todo');
+    // Get the value
+    var task = el.value;
+
+    if (task) {
+      // Add the new value
+      this.tasks.push(task.trim());
+      // Reset input value
+      el.value = '';
+      // Dislay the new list
+      this.FetchAll();
+    }
+  };
+
+  this.Edit = function (item) {
+    var el = document.getElementById('edit-todo');
+    // Display value in the field
+    el.value = this.tasks[item];
+    // Display fields
+    document.getElementById('edit-box').style.display = 'block';
+    self = this;
+
+    document.getElementById('save-edit').onsubmit = function() {
+      // Get value
+      var task = el.value;
+
+      if (task) {
+        // Edit value
+        self.tasks.splice(item, 1, task.trim());
+        // Display the new list
+        self.FetchAll();
+        // Hide fields
+        CloseInput();
+      }
+    }
+  };
+
+  this.Delete = function (item) {
+    // Delete the current row
+    this.tasks.splice(item, 1);
+    // Display the new list
+    this.FetchAll();
+  };
+
+  this.Count = function(data) {
+    var el   = document.getElementById('counter');
+    var name = 'Tasks';
+
+    if (data) {
+        if(data ==1){
+            name = 'Task'
+        }
+      el.innerHTML = data + ' ' + name ;
+    } 
+    else {
+      el.innerHTML = 'No ' + name;
+    }
+  };
+  
+}
+
+app.FetchAll();
+
+function CloseInput() {
+  document.getElementById('edit-box').style.display = 'none';
+}
+</script>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Registro de Usuario</title>
+        <link rel="stylesheet" href="../styles/css/Registro de Usuario.css" type="text/css"/>
+    </head>
+    <body>
+
+        <div class="background-image"></div>
+
+        <div class="container">
+            <div class="logo">
+                <img src="Logo_png.png" alt="Logo">
+            </div>
+            <form id="registroForm">
+                <div class="form-group">
+                    <label for="nombre">Nombre Completo:</label>
+                    <input type="text" id="nombre" name="nombre" required>
+                </div>
+                <div class="form-group">
+                    <label for="correo" class="email-address">Correo:</label>
+                    <input type="email" id="correo" name="correo" required>
+                </div>
+                <div class="form-group">
+                    <label for="contrasena" class="password">Contraseña:</label>
+                    <input type="password" id="contrasena" name="contrasena" required>
+                </div>
+                <div class="form-group">
+                    <label for="telefono">Número de Contacto:</label>
+                    <input type="tel" id="telefono" name="telefono" class="credit-card">
+                </div>
+                <div class="form-group">
+                    <label for="direccion" class="delivery-address">Dirección de Entrega:</label>
+                    <input type="text" id="direccion" name="direccion" class="credit-card">
+                </div>
+                <div class="form-group">
+                    <label for="tarjeta" class="credit-card">Número de Tarjeta:</label>
+                    <input type="text" id="tarjeta" name="tarjeta" class="credit-card">
+                </div>
+                <div class="form-group">
+                    <label for="cvv">CVV:</label>
+                    <input type="text" id="cvv" name="cvv">
+                </div>
+                <div class="form-group">
+                    <label for="vencimiento">Vencimiento:</label>
+                    <input type="text" id="vencimiento" name="vencimiento">
+                </div>
+                <div class="form-group">
+                    <input type="checkbox" id="terminos" name="terminos" required>
+                    <label for="terminos">Acepto los términos de política de privacidad y términos de servicio</label>
+                </div>
+                <button type="submit">Crear Usuario</button>
+            </form>
+        </div>
+
+        <script>
+            class RegistroUsuario {
+                constructor() {
+                    this.formulario = document.getElementById('registroForm');
+                    this.formulario.addEventListener('submit', this.crearUsuario.bind(this));
+                }
+
+                crearUsuario(event) {
+                    event.preventDefault();
+                    console.log('Datos del formulario:', this.obtenerDatosFormulario());
+                }
+
+                obtenerDatosFormulario() {
+                    const formData = new FormData(this.formulario);
+                    const datos = {};
+                    formData.forEach((valor, clave) => {
+                        datos[clave] = valor;
+                    });
+                    return datos;
+                }
+            }
+
+            const registro = new RegistroUsuario();
+        </script>
+
+    </body>
+</html>

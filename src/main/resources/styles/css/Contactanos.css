@@ -1,0 +1,114 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+.navbar {
+    background-color: #4cb6ac;
+    color: #fff;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.navbar ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+}
+.navbar ul li {
+    margin-right: 20px;
+}
+.navbar ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.query-bar {
+    background-color: #ffa827;
+    color: #fff;
+    padding: 10px 20px;
+    text-align: center;
+}
+
+.contact-bar {
+    background-color: #4cb6ac;
+    color: #fff;
+    padding: 5px 10px;
+    text-align: center;
+}
+
+.form-container {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+
+.form {
+    width: 40%;
+}
+
+.input-field {
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+.textarea-field {
+    margin-bottom: 10px;
+    width: 100%;
+    height: 200px;
+    resize: vertical;
+}
+
+.terms-title {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.submit-btn {
+    background-color: green;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.cancel-btn {
+    background-color: red;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.footer {
+    background-color: #cddc39;
+    color: #fff;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+.footer ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+}
+.footer ul li {
+    margin-right: 20px;
+}
+.footer ul li a {
+    color: #fff;
+    text-decoration: none;
+}

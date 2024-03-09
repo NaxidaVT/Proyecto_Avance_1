@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="es">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Carrito de Compras</title>
+        <style>
+            /* Estilos para la barra superior */
+            .navbar {
+                background-color: #4cb6ac; /* Barra de color 4cb6ac */
+                color: #fff;
+                padding: 10px 20px;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+            .navbar ul {
+                list-style-type: none;
+                margin: 0;
+                padding: 0;
+                display: flex;
+                align-items: center;
+            }
+            .navbar ul li {
+                margin-right: 20px;
+            }
+            .navbar ul li a {
+                color: #fff;
+                text-decoration: none;
+            }
+
+            /* Estilos para la barra inferior */
+            .footer {
+                background-color: #cddc39; /* Color de la barra inferior */
+                color: #fff;
+                padding: 10px 20px;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                position: fixed;
+                bottom: 0;
+                width: 100%;
+            }
+            .footer ul {
+                list-style-type: none;
+                margin: 0;
+                padding: 0;
+                display: flex;
+                align-items: center;
+            }
+            .footer ul li {
+                margin-right: 20px;
+            }
+            .footer ul li a {
+                color: #fff;
+                text-decoration: none;
+            }
+
+            /* Estilos para el contenedor principal */
+            .container {
+                display: flex;
+                justify-content: space-around;
+                flex-wrap: wrap;
+                margin-top: 20px;
+            }
+
+            /* Estilos para cada producto */
+            .product {
+                width: 30%;
+                margin-bottom: 20px;
+                padding: 20px;
+                background-color: #4cb6ac; /* Color 4cb6ac */
+                border-radius: 10px;
+                box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+            }
+
+            /* Estilos para los botones dentro de los productos */
+            .product button {
+                display: block;
+                width: 100%;
+                padding: 10px;
+                margin-bottom: 10px;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+                text-align: center;
+            }
+
+            /* Color de los botones según especificación */
+            .finish-btn {
+                background-color: #ffa827;
+                color: #fff;
+            }
+        </style>
+    </head>
+
+    <body>
+        <!-- Barra superior -->
+        <div class="navbar">
+            <ul>
+                <li><a href="#">Conózcanos</a></li>
+                <li><a href="#">Restaurantes</a></li>
+                <li><a href="#">Contáctenos</a></li>
+            </ul>
+            <ul>
+                <li><a href="#"><img src="icono_busqueda.png" alt="Búsqueda" width="20"></a></li>
+                <li><a href="#"><img src="icono_carrito.png" alt="Carrito" width="20"></a></li>
+            </ul>
+        </div>
+
+        <!-- Contenedor principal -->
+        <div class="container">
+            <!-- Producto 1 -->
+            <div class="product">
+                <h2>Producto 1</h2>
+                <p>Información del producto 1</p>
+                <p>Precio: $XX</p>
+                <p>Local: Local 1</p>
+                <button class="finish-btn" onclick="mostrarConfirmacion()">Finalizar pedido</button>
+            </div>
+
+            <!-- Producto 2 -->
+            <div class="product">
+                <h2>Producto 2</h2>
+                <p>Información del producto 2</p>
+                <p>Precio: $XX</p>
+                <p>Local: Local 2</p>
+                <button class="finish-btn" onclick="mostrarConfirmacion()">Finalizar pedido</button>
+            </div>
+
+            <!-- Agregar más productos aquí -->
+        </div>
+
+        <!-- Barra inferior -->
+        <div class="footer">
+            <ul>
+                <li><img src="logo.png" alt="Logo" width="20"></li>
+                <li>Información sobre la página</li>
+            </ul>
+            <ul>
+                <li><button class="btn">Ubicación</button></li>
+                <li><button class="btn">Registro</button></li>
+                <li><a href="#">Correo de contacto</a></li>
+                <li><a href="#">Número de contacto</a></li>
+            </ul>
+            <ul>
+                <li><a href="#">Conózcanos</a></li>
+                <li><a href="#">Políticas de privacidad</a></li>
+                <li><a href="#">Mapa de sitio</a></li>
+            </ul>
+        </div>
+
+        <!-- Cuadro de confirmación -->
+        <div id="confirmacion" style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background-color: #fff; padding: 20px; border: 1px solid #000; border-radius: 10px;">
+            <h2>Confirmar detalles</h2>
+            <p>Ubicación: (Aquí se mostrará la ubicación)</p>
+            <p>Nombre: (Aquí se mostrará el nombre)</p>
+            <button onclick="confirmarPedido()">Confirmar pedido</button>
+        </div>
+
+        <!-- Cuadro de agradecimiento -->
+        <div id="agradecimiento" style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background-color: #fff; padding: 20px; border: 1px solid #000; border-radius: 10px;">
+            <h2>¡Gracias por tu pedido!</h2>
+            <button onclick="volverAlInicio()">Volver al inicio</button>
+        </div>
+
+        <script>
+            function mostrarConfirmacion() {
+                document.getElementById("confirmacion").style.display = "block";
+            }
+
+            function confirmarPedido() {
+                // Aquí se puede agregar la lógica para procesar el pedido
+                // Por simplicidad solo ocultaremos el cuadro de confirmación y mostraremos el de agradecimiento
+                document.getElementById("confirmacion").style.display = "none";
+                document.getElementById("agradecimiento").style.display = "block";
+            }
+
+            function volverAlInicio() {
+                // Aquí se puede agregar la lógica para redirigir al usuario al inicio de la página o a otra página
+                alert("Redirigir al inicio");
+            }
+        </script>
+    </body>
+
+</html>

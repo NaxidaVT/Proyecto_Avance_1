@@ -1,0 +1,95 @@
+/* Estilos para la barra superior */
+.navbar {
+    background-color: #4cb6ac;
+    color: #fff;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.navbar ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+}
+.navbar ul li {
+    margin-right: 20px;
+}
+.navbar ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+/* Estilos para el contenedor principal */
+.carrito {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+}
+
+/* Estilos para cada producto */
+.product {
+    width: 80%;
+    margin-bottom: 20px;
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.product img {
+    width: 100px;
+    height: auto;
+    border-radius: 5px;
+}
+.product-info {
+    flex: 1;
+    margin-left: 20px;
+}
+.product-info h3 {
+    margin-top: 0;
+}
+.product-info p {
+    margin: 5px 0;
+}
+.product button {
+    background-color: #ffa827;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+/* Estilos para la barra inferior */
+.footer {
+    background-color: #cddc39;
+    color: #fff;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+.footer ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+}
+.footer ul li {
+    margin-right: 20px;
+}
+.footer ul li a {
+    color: #fff;
+    text-decoration: none;
+}
