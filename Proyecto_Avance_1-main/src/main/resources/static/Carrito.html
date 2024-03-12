@@ -4,8 +4,9 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Configuración de Cuenta</title>
-        <link rel="stylesheet" href="../styles/css/Cuenta.css" type="text/css" />
+        <title>Carrito de Compras</title>
+        <link rel="stylesheet" href="../styles/css/Carrito.css" type="text/css"/>
+
     </head>
 
     <body>
@@ -13,14 +14,9 @@
         <!-- Barra superior -->
         <div class="navbar">
             <ul>
-
-                <li><a href="Inicio.html">Inicio</a> | </li>
-
-
                 <li><a href="Conozcanos.html">Conózcanos</a> | </li>
                 <li><a href="Restaurantes.html">Restaurantes</a> | </li>
                 <li><a href="Contactenos.html">Contáctenos</a></li>
-            </ul>
             <ul>
                 <li><a href="#"><img src="icono_busqueda.png" alt="Búsqueda" width="20"></a></li>
                 <li><a href="Carrito.html"><img src="icono_carrito.png" alt="Carrito" width="20"></a></li>
@@ -28,36 +24,45 @@
         </div>
 
         <!-- Contenedor principal -->
-        <div class="container">
-            
-            <!-- Rectángulo 1 - Información Personal -->
-            <div class="rectangle">
-                <h2>Información Personal</h2>
-                <button class="btn1">Nombre completo</button>
-                <button class="btn2">Correo</button>
-                <button class="btn3">Contraseña</button>
-                <button class="btn4">Número de contacto</button>
-                <button class="btn1">Dirección de entrega</button>
+        <div class="carrito">
+            <!-- Producto 1 -->
+            <div class="product">
+                <img src="producto1.png" alt="Producto 1">
+                <div class="product-info">
+                    <h3>Producto 1</h3>
+                    <p>Información del producto 1...</p>
+                    <p>Precio: $50</p>
+                    <p>Local: Local 1</p>
+                </div>
+                <button>Eliminar</button>
             </div>
 
-            <!-- Rectángulo 2 - Método de Pago -->
-            <div class="rectangle">
-                <h2>Método de Pago</h2>
-                <button class="btn1">Número de tarjeta</button>
-                <button class="btn2">CVV</button>
-                <button class="btn3">Vencimiento</button>
-                <button class="btn4">Políticas de privacidad</button>
-                <button class="logout-btn">Confirmar cambios</button>
+            <!-- Producto 2 -->
+            <div class="product">
+                <img src="producto2.png" alt="Producto 2">
+                <div class="product-info">
+                    <h3>Producto 2</h3>
+                    <p>Información del producto 2...</p>
+                    <p>Precio: $40</p>
+                    <p>Local: Local 2</p>
+                </div>
+                <button>Eliminar</button>
             </div>
 
-            <!-- Rectángulo 3 - Preferencia de Cuenta -->
-            <div class="rectangle">
-                <h2>Preferencia de Cuenta</h2>
-                <button class="btn1">Notificaciones</button>
-                <button class="btn2">Direcciones guardadas</button>
-                <button class="btn3">Ayuda y soporte</button>
-                <button class="btn4">Cerrar sesión</button>
+            <!-- Producto 3 -->
+            <div class="product">
+                <img src="producto3.png" alt="Producto 3">
+                <div class="product-info">
+                    <h3>Producto 3</h3>
+                    <p>Información del producto 3...</p>
+                    <p>Precio: $30</p>
+                    <p>Local: Local 3</p>
+                </div>
+                <button>Eliminar</button>
             </div>
+
+            <!-- Botón de finalizar pedido -->
+            <button class="finalizar-btn">Finalizar Pedido</button>
         </div>
 
         <!-- Barra inferior -->
