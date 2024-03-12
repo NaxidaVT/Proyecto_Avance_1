@@ -1,2 +1,2 @@
-# Proyecto_Avance_1
- Avance 1 proyecto villa gastronomica grupo 6
+# Proyecto_Avance_2
+ Avance 2 Proyecto Villa gastronomica Grupo 6
