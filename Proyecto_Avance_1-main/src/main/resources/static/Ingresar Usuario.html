@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Ingreso de Usuario</title>
+        <link rel="stylesheet" href="../styles/css/Ingresar Usuario.css" type="text/css"/>
+    </head>
+    <body>
+
+        <div class="background-image"></div>
+
+        <div class="container">
+            <div class="logo">
+                <img src="Logo_png.png" alt="Logo">
+            </div>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="correo">Correo:</label>
+                    <input type="email" id="correo" name="correo" required>
+                </div>
+                <div class="form-group">
+                    <label for="contrasena">Contraseña:</label>
+                    <input type="password" id="contrasena" name="contrasena" required>
+                </div>
+                <div class="form-group">
+                    <input type="checkbox" id="recordar" name="recordar">
+                    <label for="recordar">Recordar contraseña</label>
+                </div>
+                <div class="form-group">
+                    <input type="checkbox" id="mostrar" name="mostrar">
+                    <label for="mostrar">Mostrar contraseña</label>
+                </div>
+                <button type="submit">Ingresar</button>
+                <p>¿No tienes una cuenta? <a href="#">Regístrate aquí</a></p>
+            </form>
+        </div>
+
+        <script>
+            class IngresoUsuario {
+                constructor() {
+                    this.formulario = document.getElementById('loginForm');
+                    this.formulario.addEventListener('submit', this.ingresarUsuario.bind(this));
+                    this.mostrarContraseña = document.getElementById('mostrar');
+                    this.mostrarContraseña.addEventListener('change', this.toggleMostrarContraseña.bind(this));
+                }
+
+                ingresarUsuario(event) {
+                    event.preventDefault();
+                    console.log('Datos del formulario:', this.obtenerDatosFormulario());
+                }
+
+                obtenerDatosFormulario() {
+                    const formData = new FormData(this.formulario);
+                    const datos = {};
+                    formData.forEach((valor, clave) => {
+                        datos[clave] = valor;
+                    });
+                    return datos;
+                }
+
+                toggleMostrarContraseña() {
+                    const contraseñaInput = document.getElementById('contrasena');
+                    if (this.mostrarContraseña.checked) {
+                        contraseñaInput.type = 'text';
+                    } else {
+                        contraseñaInput.type = 'password';
+                    }
+                }
+            }
+
+            const ingreso = new IngresoUsuario();
+        </script>
+
+    </body>
+</html>
