@@ -4,27 +4,37 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Local</title>
-        <link rel="stylesheet" href="../styles/css/Selecion de restaurante.css" type="text/css"/>
+        <link href="../styles/css/SeleccionRestaurante.css" rel="stylesheet" type="text/css" />
+        <link href="../styles/css/Registro de Usuario.css" rel="stylesheet" type="text/css"/>
+        <link href="../styles/css/Política-de-privacidad.css" rel="stylesheet" type="text/css"/>
+        <link href="../styles/css/Restaurantes.css" rel="stylesheet" type="text/css">
+        <link href="../styles/css/Inicio.css" rel="stylesheet" type="text/css"/>
+        <link href="../styles/css/Cuenta.css" rel="stylesheet" type="text/css">
+        <link href="../styles/css/Restaurantes.css" rel="stylesheet" type="text/css"/>
+        <link href="../styles/css/Contactanos.css" rel="stylesheet" type="text/css">
+        <link href="../styles/css/Conozcanos.css" rel="stylesheet" type="text/css">
+        <link href="../styles/css/Carrito.css" rel="stylesheet" type="text/css"/>
+        <link href="../styles/css/Intentodeimplementar.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
-        
         <!-- Barra superior -->
-        <div class="navbar">
-            <ul>
-                <li><a href="Inicio.html">Inicio</a> | </li>
-                <li><a href="Conozcanos.html">Conózcanos</a> | </li>
-                <li><a href="Restaurantes.html">Restaurantes</a> | </li>
-                <li><a href="Contactenos.html">Contáctenos</a></li>
-            </ul>
-            <ul>
-                <li><a href="#"><img src="icono_busqueda.png" alt="Búsqueda" width="20"></a></li>
-                <li><a href="Carrito.html"><img src="icono_carrito.png" alt="Carrito" width="20"></a></li>
-            </ul>
-        </div>
+        <header class="navbar">
+            <nav>
+                <ul>
+                    <li><a href="Inicio.html">Inicio</a> | </li>
+                    <li><a href="Conozcanos.html">Conózcanos</a> | </li>
+                    <li><a href="Restaurantes.html">Restaurantes</a> | </li>
+                    <li><a href="Contactenos.html">Contáctenos</a></li>
+                </ul>
+                <ul>
+                    <li><a href="#"><img src="../Imagenes/icono_busqueda.png" alt="Búsqueda" width="20"></a></li>
+                    <li><a href="Carrito.html"><img src="../Imagenes/icono_carrito.png" alt="Carrito" width="20"></a></li>
+                </ul>
+            </nav>
+        </header>
         <div>
-            <img src="Mexican.jpg"style="display: block; margin: 0 auto;" alt="Mexican">
+            <img src="../Imagenes/Mexican.jpg" alt="Mexican" width="20" style="display: block; margin: 0 auto; ">
         </div>
-    <seccion>
         <!-- Banner -->
         <div class="banner-container">
             <div class="banner"></div>
@@ -32,99 +42,95 @@
 
         <!-- Contenedor de productos -->
         <div class="container">
-            
             <!-- Cuadros de productos -->
             <!-- Sección del menú -->
             <div class="menu">
                 <h3>Menú</h3>
-                
                 <!-- Cuadro 1 -->
                 <div class="menu-option">
-                    <img src="Tacos al Pastor.jpg" alt="Producto 1">
+                    <img src="../Imagenes/Tacos-al-Pastor.jpg" alt="Tacos al Pastor" width="20">
                     <div class="menu-option-text">
-                        <p>Nombre:Tacos al Pastor</p>
-                        <p>Contiene:Carne de cerdo marinada,Tortilla,Cebolla,Cilantro,Salsa,Limón.</p>
-                        <p>Precio:4500</p>
+                        <p>Nombre: Tacos al Pastor</p>
+                        <p>Contiene: Carne de cerdo marinada, Tortilla, Cebolla, Cilantro, Salsa, Limón.</p>
+                        <p>Precio: 4500</p>
+                        <button class="btn-add-to-cart">Añadir al carrito</button>
                     </div>
-                    <img src="icono_mas.png" alt="Agregar al carrito" width="20">
                 </div>
-                
                 <!-- Cuadro 2 -->
                 <div class="menu-option">
-                    <img src="Tacos Carne Asada.jpg" alt="Producto 2">
+                    <img src="../Imagenes/Tacos-Carne-Asada.jpg" alt="Tacos Carne Asada" width="20">
                     <div class="menu-option-text">
-                        <p>Nombre:Tacos Carne Asada</p>
-                        <p>Contiene:Carne de res,Tortilla,Cebolla,Cilantro,Limón,Salsa</p>
-                        <p>Precio:3500 </p>
+                        <p>Nombre: Tacos Carne Asada</p>
+                        <p>Contiene: Carne de res, Tortilla, Cebolla, Cilantro, Limón, Salsa</p>
+                        <p>Precio: 3500</p>
+                        <button class="btn-add-to-cart">Añadir al carrito</button>
                     </div>
-                    <img src="icono_mas.png" alt="Agregar al carrito" width="20">
                 </div>
-                
                 <!-- Cuadro 3 -->
                 <div class="menu-option">
-                    <img src="Tacos Barbacoa.jpg" alt="Producto 3">
+                    <img src="../Imagenes/Tacos-Barbacoa.jpg" alt="Tacos Barbacoa" width="20">
                     <div class="menu-option-text">
-                        <p>Nombre:Tacos Barbacoa</p>
-                        <p>Contiene:Carne de res,Tortilla,Limón,Salsa,Consomé de barbacoa</p>
-                        <p>Precio:4000 </p>
+                        <p>Nombre: Tacos Barbacoa</p>
+                        <p>Contiene: Carne de res, Tortilla, Limón, Salsa, Consomé de barbacoa</p>
+                        <p>Precio: 4000</p>
+                        <button class="btn-add-to-cart">Añadir al carrito</button>
                     </div>
-                    <img src="icono_mas.png" alt="Agregar al carrito" width="20">
                 </div>
-                
                 <!-- Cuadro 4 -->
                 <div class="menu-option">
-                    <img src="Tacos Bistek.jpg" alt="Producto 4">
+                    <img src="../Imagenes/Tacos-Bistek.jpg" alt="Tacos Bistek" width="20">
                     <div class="menu-option-text">
-                        <p>Nombre:Tacos Bistek</p>
-                        <p>Contiene:Bistek de res,Tortilla,Cebolla,Cilantro,Limón,Salsa</p>
-                        <p>Precio:4300</p>
+                        <p>Nombre: Tacos Bistek</p>
+                        <p>Contiene: Bistek de res, Tortilla, Cebolla, Cilantro, Limón, Salsa</p>
+                        <p>Precio: 4300</p>
+                        <button class="btn-add-to-cart">Añadir al carrito</button>
                     </div>
-                    <img src="icono_mas.png" alt="Agregar al carrito" width="20">
                 </div>
-                
                 <!-- Cuadro 5 -->
                 <div class="menu-option">
-                    <img src="Tacos Pollo.jpg" alt="Producto 5">
+                    <img src="../Imagenes/Tacos-Pollo.jpg" alt="Tacos Pollo" width="20">
                     <div class="menu-option-text">
-                        <p>Nombre:Tacos Pollo</p>
-                        <p>Contiene:Pollo, Tortilla,Cebolla,Cilantro,Limón,Salsa</p>
-                            <p>Precio:3000</p>
+                        <p>Nombre: Tacos Pollo</p>
+                        <p>Contiene: Pollo, Tortilla, Cebolla, Cilantro, Limón, Salsa</p>
+                        <p>Precio: 3000</p>
+                        <button class="btn-add-to-cart">Añadir al carrito</button>
                     </div>
-                    <img src="icono_mas.png" alt="Agregar al carrito" width="20">
                 </div>
-                
                 <!-- Cuadro 6 -->
                 <div class="menu-option">
-                    <img src="Tacos Pescado.jpg" alt="Producto 6">
+                    <img src="../Imagenes/Tacos-Pescado.jpg" alt="Tacos Pescado" width="20">
                     <div class="menu-option-text">
-                        <p>Nombre:Tacos Pescado</p>
-                        <p>Contiene:Pescado,Tortillas,Repollo,Crema</p>
-                            <p>Precio:4000</p>
+                        <p>Nombre: Tacos Pescado</p>
+                        <p>Contiene: Pescado, Tortillas, Repollo, Crema</p>
+                        <p>Precio: 4000</p>
+                        <button class="btn-add-to-cart">Añadir al carrito</button>
                     </div>
-                    <img src="icono_mas.png" alt="Agregar al carrito" width="20">
                 </div>
-
             </div>
         </div>
-        </seccion>
-
         <!-- Barra inferior -->
-        <div class="footer">
-            <ul>
-                <li><img src="logo.png" alt="Logo" width="20"></li>
-                <li>Información sobre la página</li>
-            </ul>
-            <ul>
-                <li><button class="btn">Ubicación</button></li>
-                <li><button class="btn">Registro</button></li>
-                <li><a href="#">Correo de contacto</a></li>
-                <li>Número de contacto: (+506) 7109 5870</a></li>
-            </ul>
-            <ul>
-                <li><a href="#">Conózcanos</a></li>
-                <li><a href="#">Políticas de privacidad</a></li>
-                <li><a href="Mapa de sitio.html">Mapa de sitio</a></li>                          
-            </ul>
-        </div>
+        <footer class="footer">
+            <nav>
+                <ul>
+                    <li><img src="../Imagenes/LogoSinFondo.png" alt="Logo" width="20"></li>
+                    <li>Información sobre la página</li>
+                </ul>
+            </nav>
+            <nav>
+                <ul>
+                    <li><a href="https://maps.app.goo.gl/RfThuX5ggXUVrEb1A">Ubicación</a></li>
+                    <li><a href="Registro-de-usuario.html">Registro</a></li>
+                    <li><a href="mailto:gasgonmatiiica24@gamil.com.cr">Correo de contacto</a></li>
+                    <li><a href="tel:85996955">Número de contacto: (+506) 7109 5870</a></li>
+                </ul>
+            </nav>
+            <nav>
+                <ul>
+                    <li><a href="Conozcanos.html">Conózcanos</a></li>
+                    <li><a href="Política-de-privacidad.html">Políticas de privacidad</a></li>
+                    <li><a href="Mapa-de-sitio.html">Mapa de sitio</a></li>
+                </ul>
+            </nav>
+        </footer>
     </body>
 </html>

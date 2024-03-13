@@ -22,55 +22,6 @@
     text-decoration: none;
 }
 
-/* Estilos para el contenedor principal */
-.carrito {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 20px;
-}
-
-/* Estilos para cada producto */
-.product {
-    width: 80%;
-    margin-bottom: 20px;
-    padding: 20px;
-    background-color: #fff;
-    border: 1px solid #ccc;
-    border-radius: 10px;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-.product img {
-    width: 100px;
-    height: auto;
-    border-radius: 5px;
-}
-.product-info {
-    flex: 1;
-    margin-left: 20px;
-}
-.product-info h3 {
-    margin-top: 0;
-}
-.product-info p {
-    margin: 5px 0;
-}
-.product button {
-    background-color: #ffa827;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    padding: 10px 20px;
-    cursor: pointer;
-}
-.local img {
-  width: 200px;
-  height: 200px;
-  object-fit: cover;
-}
 /* Estilos para la barra inferior */
 .footer {
     background-color: #cddc39;
@@ -96,4 +47,40 @@
 .footer ul li a {
     color: #fff;
     text-decoration: none;
+}
+
+/* Estilos para el contenedor principal */
+.container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+/* Estilos para cada producto */
+.product {
+    width: 30%;
+    margin-bottom: 20px;
+    padding: 20px;
+    background-color: #4cb6ac;
+    border-radius: 10px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+
+/* Estilos para los botones dentro de los productos */
+.product button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+}
+
+/* Color de los botones según especificación */
+.finish-btn {
+    background-color: #ffa827;
+    color: #fff;
 }

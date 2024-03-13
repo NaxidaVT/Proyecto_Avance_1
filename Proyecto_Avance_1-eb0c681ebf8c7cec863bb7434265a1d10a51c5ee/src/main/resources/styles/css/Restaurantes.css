@@ -1,9 +1,13 @@
-body {
+ body {
     margin: 0;
     padding: 0;
     font-family: Arial, sans-serif;
 }
-
+.local img {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+}
 /* Estilos de la barra superior */
 .navbar {
     background-color: #4cb6ac; /* Barra de color 4cb6ac */

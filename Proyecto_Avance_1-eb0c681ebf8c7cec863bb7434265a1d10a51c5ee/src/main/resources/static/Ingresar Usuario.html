@@ -4,7 +4,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Ingreso de Usuario</title>
-        <link rel="stylesheet" href="../styles/css/Ingresar Usuario.css" type="text/css"/>
+        <link href="../styles/css/Ingresar Usuario.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
 
@@ -12,7 +12,7 @@
 
         <div class="container">
             <div class="logo">
-                <img src="Logo_png.png" alt="Logo">
+                <img src="../Imagenes/Logo_png.png" alt="Logo" width="500">
             </div>
             <form id="loginForm">
                 <div class="form-group">
@@ -32,7 +32,7 @@
                     <label for="mostrar">Mostrar contraseña</label>
                 </div>
                 <button type="submit">Ingresar</button>
-                <p>¿No tienes una cuenta? <a href="#">Regístrate aquí</a></p>
+                <p>¿No tienes una cuenta? <a href="Registro de usuario.html">Regístrate aquí</a></p>
             </form>
         </div>
 
@@ -47,7 +47,9 @@
 
                 ingresarUsuario(event) {
                     event.preventDefault();
-                    console.log('Datos del formulario:', this.obtenerDatosFormulario());
+                    const datos = this.obtenerDatosFormulario();
+                    console.log('Datos del formulario:', datos);
+                    // Aquí puedes enviar los datos al servidor para verificar el inicio de sesión
                 }
 
                 obtenerDatosFormulario() {

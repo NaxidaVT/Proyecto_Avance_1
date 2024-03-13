@@ -1,7 +1,16 @@
-body {
+* {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+}
+
+/* Estilos genéricos */
+body {
     font-family: Arial, sans-serif;
+}
+/* Establecer un ancho fijo para todas las imágenes */
+img {
+    width: 500px; /* Puedes ajustar el valor según tus preferencias */
 }
 
 /* Estilos de la barra superior */
@@ -12,6 +21,10 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+.navbar .logo {
+    text-align: center;
 }
 
 .navbar ul {
@@ -29,16 +42,12 @@ body {
 .navbar ul li a {
     color: #fff;
     text-decoration: none;
-}
-
-.container {
     display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-    margin-top: 20px;
+    align-items: center;
+    height: 100%;
 }
 
-/* Estilos para el banner */
+/* Estilos del banner */
 .banner-container {
     position: relative;
     overflow: hidden;
@@ -49,9 +58,10 @@ body {
 
 .banner {
     position: absolute;
-    top: 0;
-    left: -100%; /* Inicia fuera de la pantalla */
-    width: 300%; /* Ancho tres veces mayor que el contenedor para cubrir todo el recorrido */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
     height: 100%;
     background-image: url('imagen_fondo_banner.jpg'); /* Reemplaza 'imagen_fondo_banner.jpg' con la URL de tu imagen de fondo */
     animation: slideBanner 10s linear infinite; /* Cambia la duración y la velocidad según lo desees */
@@ -66,7 +76,7 @@ body {
     }
 }
 
-/* Estilos para los cuadros de producto */
+/* Estilos de los cuadros de producto */
 .product {
     width: 30%;
     margin-bottom: 20px;
@@ -74,23 +84,28 @@ body {
     border-radius: 5px;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
     padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
-
 .product img {
     display: block;
     width: 100%;
     border-radius: 5px;
+    margin-bottom: 10px;
 }
 
 .product h3 {
     text-align: center;
+    margin-bottom: 10px;
 }
 
 .product p {
     text-align: center;
+    margin-top: 0;
 }
 
-/* Estilos para el menú */
+/* Estilos del menú */
 .menu {
     width: 60%;
     margin: 20px auto; /* Centrado horizontal */
@@ -101,6 +116,7 @@ body {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
+    align-items: center;
 }
 
 .menu h3 {
@@ -116,6 +132,7 @@ body {
     padding: 10px;
     display: flex;
     align-items: center;
+    justify-content: space-between;
 }
 
 .menu-option img {
@@ -126,13 +143,17 @@ body {
 
 .menu-option-text {
     flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .menu-option-text p {
     margin: 0;
+    text-align: center;
 }
 
-/* Estilos para la barra inferior */
+/* Estilos de la barra inferior */
 .footer {
     background-color: #cddc39; /* Color de la barra inferior */
     color: #fff;
@@ -160,4 +181,15 @@ body {
 .footer ul li a {
     color: #fff;
     text-decoration: none;
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+.footer .text {
+    text-align: center;
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }

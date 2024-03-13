@@ -1,4 +1,8 @@
-/* Estilos generales */
+.local img {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+}/* Estilos generales */
 body {
     margin: 0;
     font-family: Arial, sans-serif;
