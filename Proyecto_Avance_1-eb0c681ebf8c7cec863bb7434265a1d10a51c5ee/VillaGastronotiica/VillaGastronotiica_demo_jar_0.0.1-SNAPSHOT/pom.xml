@@ -5,18 +5,21 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>3.2.3</version>
+		<version>3.2.2</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>Grupo_6</groupId>
-	<artifactId>Grupo_6_Proyecto</artifactId>
-	<version>0.0.1</version>
-	<name>Grupo_6_Proyecto</name>
-	<description>-----------------</description>
+	<groupId>VillaGastronotiica</groupId>
+	<artifactId>demo</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>demo</name>
+	<description>Demo project for Spring Boot</description>
 	<properties>
-        <java.version>19</java.version>
-    </properties>
-    <dependencies>
+		<java.version>18</java.version>
+	</properties>
+	<dependencies>
+
+    
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-thymeleaf</artifactId>
@@ -75,8 +78,31 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.google.firebase</groupId>
+            <artifactId>firebase-admin</artifactId>
+            <version>9.1.1</version>
+        </dependency> 
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.thymeleaf.extras</groupId>
+            <artifactId>thymeleaf-extras-springsecurity6</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>javax.validation</groupId>
+            <artifactId>validation-api</artifactId>
+            <version>2.0.1.Final</version>
+        </dependency>
+        <dependency>
+            <groupId>org.glassfish.main.bean-validator</groupId>
+            <artifactId>bean-validator</artifactId>
+            <version>5.1.0</version>
+            <type>jar</type>
+        </dependency>
     </dependencies>
-
     <build>
         <plugins>
             <plugin>
