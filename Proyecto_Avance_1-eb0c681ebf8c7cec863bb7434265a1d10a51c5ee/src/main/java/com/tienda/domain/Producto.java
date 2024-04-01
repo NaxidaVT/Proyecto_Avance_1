@@ -15,17 +15,19 @@ public class Producto implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="id_producto")
     private Long idProducto;
-    //private Long idCategoria;  ya no se usa por el @manyToOne
+    
+    //private Long idRestaurante(false);
+    private String nombre;
     private String descripcion;
-    private String detalle;
     private double precio;
+    private String restauranteId;
     private int existencias;
     private String rutaImagen;
     private boolean activo;
 
     @ManyToOne
-    @JoinColumn(name="id_categoria")
-    Categoria categoria;
+    @JoinColumn(name="id_restaurantes")
+    Restaurantes restaurantes;
 
 
     public Producto() {
