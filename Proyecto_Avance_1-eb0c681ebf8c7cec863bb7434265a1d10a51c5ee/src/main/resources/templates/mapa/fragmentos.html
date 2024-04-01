@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+    <head>     
+        <title>Villa Gastronomica</title>
+        <script src="https://maps.googleapis.com/maps/api/js?key=TU_API_KEY"></script>
+    </head>
+    <body>
+        <section th:fragment="mapa">
+            <div class="container" sec:authorize="hasRole('ROLE_USER')">             
+                <a href="header.html"></a>
+                <!-- Mapa de Sitio -->
+                <div style="text-align: center; height: 450px;">
+                    <div id="map" style="height: 100%; width: 100%;"></div>
+                    <script>
+                        // Inicializa el mapa
+                        function initMap() {
+                            const map = new google.maps.Map(document.getElementById('map'), {
+                                center: {lat: 9.994782462165235, lng: -84.13702871440333},
+                                zoom: 15
+                            });
+
+                            // Agrega un marcador
+                            const marker = new google.maps.Marker({
+                                position: {lat: 9.994782462165235, lng: -84.13702871440333},
+                                map: map,
+                                title: 'Villa Gastronómica'
+                            });
+                        }
+
+                        // Inicializa el mapa cuando la página carga
+                        window.addEventListener('load', initMap);
+                    </script>
+                </div>
+                <a href="footer.html"></a>
+            </div>
+            </div>
+            </div>
+        </section>
+    </body>
+</html>

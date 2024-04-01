@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://wwww.thymeleaf.org">
+    <head th:replace="~{layout/plantilla :: head}">
+        <title>VillaGastronomica</title>
+        <meta charset="UTF-8"/>
+    </head>
+    <body>
+        <header th:replace="~{layout/plantilla :: header}"/>
+
+        <div>
+            <link href="../static/css/Selecion de restaurante.css" rel="stylesheet" type="text/css"/>
+            <img src="../Imagenes/KelvinBurguerLocal.jpg" alt="KelvinBurger" width="500"/>
+        </div>
+        <!-- Banner -->
+        <div class="banner-container">
+            <div class="banner"></div>
+        </div>
+
+        <!-- Contenedor de productos -->
+        <main class="container">
+            <!-- Sección del menú -->
+            <section class="menu">
+                <link href="../static/css/Selecion de restaurante.css" rel="stylesheet" type="text/css"/>
+                <h1>Menú</h1>
+                <!-- Cuadro 1 -->
+                <article class="product-card">
+                    <img src="../Imagenes/Hambuerguesa Clasica.jpg" alt="Hamburguesa Clásica" width="250" />
+                    <div class="product-text">
+                        <h2>Nombre: Hambuerguesa Clásica</h2>
+                        <p>Contiene: Torta De Carne, Lechuga, Tomate, Cebolla, Queso, Pepinillos</p>
+                        <p>Precio: 4500</p>
+                    </div>
+                    <img src="../Imagenes/icono_mas.png" alt="Agregar al carrito" width="20" />
+                </article>
+            </section>
+        </main>
+
+        <!-- Barra inferior -->
+        <footer th:replace="~{layout/plantilla :: footer}"/>
+    </body>
+</html>

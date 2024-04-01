@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="~{layout/plantilla :: head}">
+        <title>VillaGastronomica</title>
+        <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <link th:href="@{/css/Inicio.css}" rel="stylesheet" type="text/css" />
+                </head>
+                <body>
+                    <section th:fragment="BarraEnMedio" id="inicio">
+                        <div class="container">
+                            <div class="row justify-content-center">
+                                <div class="col-md-3">
+                                    <div class="text-center">
+                                        <p>
+                                            DomJulioCoffe es una vibrante y acogedora cafetería virtual que te transporta a un mundo de aromas tentadores y sabores exquisitos 
+                                            desde la comodidad de tu hogar. A través de su plataforma en línea, DomJulioCoffe te invita a explorar una amplia selección de 
+                                            cafés artesanales, tés aromáticos y delicias horneadas con solo unos pocos clics.
+                                        </p>                                    
+                                        <button 
+                                            type="button" 
+                                            class="btn" id="previousBtn"
+                                            style="background-color: #4cb6ac;">
+                                            <i class="fas"></i> [[#{inicio.atras}]]
+                                        </button>
+                                        <button
+                                            type="button" 
+                                            class="btn" id="nextBtn"
+                                            style="background-color: #4cb6ac;">
+                                            <i class="fas"></i> [[#{inicio.siguiente}]]
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <script>
+                                // Definición del objeto Local
+                                function Local(info) {
+                                    this.info = info;
+                                }
+
+                                // Definición del objeto LocalViewer
+                                function LocalViewer(locals) {
+                                    this.locals = locals;
+                                    this.currentIndex = 0;
+                                    this.localInfo = document.querySelector('p');
+                                    this.previousBtn = document.getElementById('previousBtn');
+                                    this.nextBtn = document.getElementById('nextBtn');
+
+                                    this.previousBtn.addEventListener('click', () => this.changeLocal(-1));
+                                    this.nextBtn.addEventListener('click', () => this.changeLocal(1));
+
+                                    this.render();
+                                }
+
+                                LocalViewer.prototype.changeLocal = function (delta) {
+                                    this.currentIndex = (this.currentIndex + delta + this.locals.length) % this.locals.length;
+                                    this.render();
+                                };
+
+                                LocalViewer.prototype.render = function () {
+                                    var currentLocal = this.locals[this.currentIndex];
+                                    this.localInfo.textContent = currentLocal.info;
+                                };
+
+                                // Array con las instancias de Local
+                                var localsData = [
+                                    new Local("DomJulioCoffe es una vibrante y acogedora cafetería virtual que te transporta a un mundo de aromas tentadores y sabores exquisitos desde la comodidad de tu hogar. A través de su plataforma en línea, DomJulioCoffe te invita a explorar una amplia selección de cafés artesanales, tés aromáticos y delicias horneadas con solo unos pocos clics."),
+                                    new Local("¡Bienvenido a KelvinBurger, el lugar donde la pasión por las hamburguesas se combina con la innovación y el sabor! En KelvinBurger, nos enorgullece ofrecer una experiencia gastronómica única que te llevará en un viaje de sabores audaces y satisfacción culinaria."),
+                                    new Local("¡Bienvenido a Mexican Tacos House, el hogar de los auténticos sabores mexicanos en forma de deliciosos tacos! En Mexican Tacos House, nos dedicamos a ofrecerte una experiencia culinaria vibrante y llena de sabor que te transportará directamente a las calles de México."),
+                                    new Local("Bienvenido a Punchis Italian, tu destino virtual para deleitarte con los auténticos sabores de la cocina italiana en la comodidad de tu hogar. En Punchis Italian, te transportamos a las pintorescas calles de Italia a través de una exquisita selección de platos tradicionales preparados con pasión y maestría.")
+                                ];
+
+                                // Inicializar el LocalViewer con los datos de los locales
+                                var localViewer = new LocalViewer(localsData);
+                            </script>
+                        </div>
+                    </section>
+                </body>
+                </html>

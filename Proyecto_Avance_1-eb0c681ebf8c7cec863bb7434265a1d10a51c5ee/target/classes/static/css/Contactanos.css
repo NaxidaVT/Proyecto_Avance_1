@@ -1,0 +1,69 @@
+.local img {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+}body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+.query-bar {
+    background-color: #ffa827;
+    color: #fff;
+    padding: 10px 20px;
+    text-align: center;
+}
+
+.contact-bar {
+    background-color: #4cb6ac;
+    color: #fff;
+    padding: 5px 10px;
+    text-align: center;
+}
+
+.form-container {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+
+.form {
+    width: 40%;
+}
+
+.input-field {
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+.textarea-field {
+    margin-bottom: 10px;
+    width: 100%;
+    height: 200px;
+    resize: vertical;
+}
+
+.terms-title {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.submit-btn {
+    background-color: green;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.cancel-btn {
+    background-color: red;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}

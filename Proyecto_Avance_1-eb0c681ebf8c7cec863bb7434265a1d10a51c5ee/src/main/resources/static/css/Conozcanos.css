@@ -1,0 +1,47 @@
+.local img {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+}body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: white;
+}
+.container {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.big-textbox {
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+    border: 2px solid #4cb6ac;
+    border-radius: 10px;
+    box-sizing: border-box;
+    resize: none;
+    height: 300px;
+}
+
+.btn {
+    background-color: #ffa827;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 0 10px;
+}
+
+.bottom-button {
+    margin-top: 50px;
+}
+
+.btn-associate {
+    background-color: #ffeb3c;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}

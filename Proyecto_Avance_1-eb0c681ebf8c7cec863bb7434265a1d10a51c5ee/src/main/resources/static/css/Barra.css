@@ -1,0 +1,126 @@
+.local img {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+}
+
+/* Estilos para la barra superior */
+.navbar {
+    background-color: #4cb6ac; /* Barra de color 4cb6ac */
+    color: #fff;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+}
+
+.navbar ul li {
+    margin-right: 20px;
+}
+
+.navbar ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+/* Estilos para la barra inferior */
+.footer {
+    background-color: #cddc39; /* Color de la barra inferior */
+    color: #fff;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+.footer ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+}
+
+.footer ul li {
+    margin-right: 20px;
+}
+
+.footer ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+/* Estilos para el contenedor principal */
+.container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+/* Estilos para cada rectángulo vertical */
+.rectangle {
+    width: 30%;
+    margin-bottom: 20px;
+    padding: 20px;
+    background-color: #4cb6ac; /* Color 4cb6ac */
+    border-radius: 10px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+
+/* Estilos para los títulos de los rectángulos */
+.rectangle h2 {
+    text-align: center;
+    color: #fff;
+    margin-top: 0;
+}
+
+/* Estilos para los botones dentro de los rectángulos */
+.rectangle button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+}
+
+/* Color de los botones según especificación */
+.btn1 {
+    background-color: #ffa827;
+    color: #fff;
+}
+
+.btn2 {
+    background-color: #548b2e;
+    color: #fff;
+}
+
+.btn3 {
+    background-color: #cddc39;
+    color: #fff;
+}
+
+.btn4 {
+    background-color: #9ccc66;
+    color: #fff;
+}
+
+/* Botón de cerrar sesión */
+.logout-btn {
+    background-color: red;
+    color: #fff;
+}

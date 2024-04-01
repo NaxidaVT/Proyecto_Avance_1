@@ -1,0 +1,75 @@
+.local img {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+}body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+.background-image {
+    background-image: url('Background Registro.jpg'); 
+    background-size: cover;
+    background-position: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+.container {
+    width: 50%;
+    margin: 100px auto;
+    background: rgba(255, 255, 255, 0.7);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+.logo {
+    text-align: center;
+    margin-bottom: 20px;
+}
+.form-group {
+    margin-bottom: 20px;
+}
+label {
+    display: block;
+    font-weight: bold;
+    color: #ffa827;
+}
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="tel"] {
+    width: calc(100% - 20px);
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-left: 10px;
+}
+input[type="checkbox"] {
+    margin-right: 5px;
+}
+button {
+    width: calc(100% - 20px);
+    padding: 10px;
+    background-color: #ffa827;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-left: 10px;
+}
+button:hover {
+    background-color: #ff8000;
+}
+label.email-address,
+label.delivery-address {
+    color: #4cb6ac;
+}
+label.password,
+label.credit-card {
+    color: #cddc39;
+}
