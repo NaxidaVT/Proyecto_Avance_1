@@ -1,15 +1,14 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org">
-    <head th:replace="~{layout/plantilla :: head}">
-        <title>VillaGastronomica</title>
+<html xmlns="http://www.w3.org/1999/xhtml" <!-- Espacio de nombres predeterminado -->
+      xmlns:th="http://www.thymeleaf.org"> <!-- Espacio de nombres para Thymeleaf -->
+      <head th:replace="~{layout/plantilla :: head}"> <!-- Reemplaza la sección head con el contenido de la plantilla layout/plantilla -->
+        <title>VillaGastronomica</title> <!-- Título de la página -->
     </head>
     <body>
-        <header th:replace="~{layout/plantilla :: header}"/>
+        <header th:replace="~{layout/plantilla :: header}"/> <!-- Reemplaza el header con el contenido de la plantilla layout/plantilla -->
 
-        <section th:replace="~{inicio/fragmentos :: BarraEnMedio}"/>
+        <section th:replace="~{inicio/fragmentos :: BarraEnMedio}"/> <!-- Reemplaza esta sección con el fragmento BarraEnMedio de la plantilla inicio/fragmentos -->
 
-        <footer th:replace="~{layout/plantilla :: footer}"/>      
-      
+        <footer th:replace="~{layout/plantilla :: footer}"/> <!-- Reemplaza el footer con el contenido de la plantilla layout/plantilla -->      
     </body>
 </html>

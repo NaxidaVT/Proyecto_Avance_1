@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:sec="http://thymeleaf.org/extras/spring-security">
+    <head th:replace="~{layout/plantilla :: head}">
+        <!-- La sección 'head' contiene metadatos y configuraciones del documento. -->
+        <title>TechShop</title>
+    </head>
+    <body>
+        <!-- Sección de encabezado -->
+        <header th:replace="~{layout/plantilla :: header}"/>
+
+        <!-- Contenedor principal -->
+        <div class="container">
+            <!-- Fila para el botón de regresar -->
+            <div class="row row-cols-6" >
+                <!-- Botón para regresar al listado del carrito -->
+                <a th:href="@{/carrito/listado}" class="btn btn-primary">
+                    <i class='fas fa-reply'></i> [[#{accion.regresar}]]
+                </a>
+            </div>
+            <!-- Filas para mostrar los detalles del artículo -->
+            <div class="row row-cols-2">
+                <!-- Tarjeta para los detalles del artículo -->
+                <div class="card">
+                    <div class="card-header">[[#{carrito.datos}]]</div>
+                    <div class="card-body">
+                        <!-- Título, precio y existencias del artículo -->
+                        <h5 class="card-title">[[${item.descripcion}]]</h5>
+                        <h6 class="card-subtitle mb-2 text-muted text-end">
+                            [[${item.precio}+' ('+${item.existencias}+')']]
+                        </h6>
+                        <!-- Detalles del artículo -->
+                        <p class="card-text">[[${item.detalle}]]</p>
+                    </div>
+                </div>
+                <!-- Tarjeta para el formulario de cantidad del artículo -->
+                <div class="card">                    
+                    <div class="card-body">
+                        <!-- Imagen del artículo -->
+                        <figure><img th:src="@{${item.rutaImagen}}" width="120"/></figure>
+                        <!-- Formulario para ajustar la cantidad del artículo en el carrito -->
+                        <form th:action="@{/carrito/guardar}" method="post" th:object="${item}">
+                            <!-- Campo oculto para el ID del artículo -->
+                            <input type="hidden" name="idArticulo" th:field="*{idArticulo}"/>
+                            <!-- Campo para ingresar la cantidad -->
+                            <div class="form-group">
+                                <label for="cantidad">[[#{carrito.cantidad}]]:</label>
+                                <input type="number" name="cantidad" th:field="*{cantidad}" 
+                                       min='1' th:max="${item.existencias}"/>
+                            </div>                
+                            <!-- Botón para guardar la cantidad del artículo -->
+                            <div class="form-group">                    
+                                <button class="btn btn-success" type="submit" name="guardar">
+                                    <i class='fas fa-save'></i> [[#{accion.guardar}]]
+                                </button>
+                            </div>
+                        </form>
+                        <!-- Botón para eliminar el artículo del carrito -->
+                        <a th:href="@{/carrito/eliminar/}+${item.idArticulo}" class="btn btn-danger">
+                            <i class='fas fa-trash'></i> [[#{accion.eliminar}]]
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sección de pie de página -->
+        <footer th:replace="~{layout/plantilla :: footer}"/>
+
+    </body>
+</html>

@@ -1,0 +1,93 @@
+<!--
+Este archivo HTML forma parte de la interfaz de usuario de TechShop, un sistema de gestión de usuarios.
+-->
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+    <head th:replace="~{layout/plantilla :: head}">
+        <!-- La etiqueta 'head' contiene la información de configuración y metadatos del documento. -->
+        <title>TechShop</title>
+    </head>
+    <body>
+        <!-- Sección para crear el botón de agregar usuario -->
+        <section th:fragment="botonesAgregar" class="py-4 mb-4 bg-light">
+            <!-- Este fragmento muestra un botón para agregar usuarios, visible solo para administradores. -->
+            <div class="container" sec:authorize="hasRole('ROLE_ADMIN')">
+                <div class="row">
+                    <div class="col-md-3">   
+                        <button 
+                            type="button" 
+                            class="btn btn-primary btn-block" 
+                            data-bs-toggle="modal" 
+                            data-bs-target="#agregarUsuario">
+                            <i class="fas fa-plus"></i> [[#{usuario.agregar}]]
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Fragmento para agregar usuario, es la ventana modal -->
+        <section th:fragment="agregarUsuario">
+            <!-- Este fragmento define una ventana modal para agregar usuarios. -->
+            <div id="agregarUsuario" 
+                 class="modal fade" 
+                 tabindex="-1" 
+                 aria-labelledby="exampleModalLabel" 
+                 aria-hidden="true">
+                <!-- Contenido de la ventana modal -->
+                <div class="modal-dialog modal-md">
+                    <div class="modal-content">
+                        <!-- Cabecera de la ventana modal -->
+                        <div class="modal-header bg-info text-white">
+                            <h5 class="modal-title">[[#{usuario.agregar}]]</h5>
+                            <button type="button" 
+                                    class="btn-close" 
+                                    data-bs-dismiss="modal" 
+                                    aria-label="Close"></button>
+                        </div> 
+                        <!-- Formulario para agregar usuarios -->
+                        <form th:action="@{/usuario/guardar}" th:object="${usuario}"
+                              method="POST" class="was-validated"
+                              enctype="multipart/form-data">
+                            <!-- Campos del formulario -->
+                            <div class="modal-body">
+                                <!-- Campos para nombre, apellidos, username, etc. -->
+                            </div>
+                            <!-- Botón para guardar el usuario -->
+                            <div class="modal-footer">
+                                <button class="btn btn-primary" type="submit">Guardar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección principal para mostrar la información de la entidad usuario -->
+        <section th:fragment="listadoUsuarios" id="usuarios">
+            <!-- Esta sección muestra un listado de usuarios con sus datos básicos. -->
+            <div class="container">
+                <!-- Contenido del listado de usuarios -->
+            </div>
+        </section>
+
+        <!-- Fragmento para editar usuario -->
+        <section th:fragment="editarUsuario">
+            <!-- Este fragmento define un formulario para editar la información de un usuario. -->
+            <div class="row">
+                <!-- Contenido del formulario de edición -->
+            </div>
+        </section>
+
+        <!-- Fragmento para botones de edición -->
+        <section th:fragment="botonesEditar">
+            <!-- Este fragmento define los botones de acción (guardar, eliminar, etc.) para el formulario de edición. -->
+            <div class="container py-4 mb-4 bg-light">
+                <!-- Botones de acción -->
+            </div>
+        </section>
+    </body>
+</html>

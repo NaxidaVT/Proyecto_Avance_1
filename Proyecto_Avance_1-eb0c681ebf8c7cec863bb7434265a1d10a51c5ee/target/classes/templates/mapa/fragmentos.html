@@ -3,29 +3,34 @@
       xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
     <head>     
+        <!-- Título de la página -->
         <title>Villa Gastronomica</title>
+        <!-- Se incluye la API de Google Maps -->
         <script src="https://maps.googleapis.com/maps/api/js?key=TU_API_KEY"></script>
     </head>
     <body>
+        <!-- Sección del mapa -->
         <section th:fragment="mapa">
             <div class="container" sec:authorize="hasRole('ROLE_USER')">             
+                <!-- Enlace al encabezado -->
                 <a href="header.html"></a>
                 <!-- Mapa de Sitio -->
                 <div style="text-align: center; height: 450px;">
+                    <!-- Div para mostrar el mapa -->
                     <div id="map" style="height: 100%; width: 100%;"></div>
                     <script>
-                        // Inicializa el mapa
+                        // Función para inicializar el mapa
                         function initMap() {
                             const map = new google.maps.Map(document.getElementById('map'), {
-                                center: {lat: 9.994782462165235, lng: -84.13702871440333},
-                                zoom: 15
+                                center: {lat: 9.994782462165235, lng: -84.13702871440333}, // Centro del mapa
+                                zoom: 15 // Nivel de zoom del mapa
                             });
 
-                            // Agrega un marcador
+                            // Agrega un marcador al mapa
                             const marker = new google.maps.Marker({
-                                position: {lat: 9.994782462165235, lng: -84.13702871440333},
-                                map: map,
-                                title: 'Villa Gastronómica'
+                                position: {lat: 9.994782462165235, lng: -84.13702871440333}, // Posición del marcador
+                                map: map, // Mapa al que se añade el marcador
+                                title: 'Villa Gastronómica' // Título del marcador
                             });
                         }
 
@@ -33,9 +38,8 @@
                         window.addEventListener('load', initMap);
                     </script>
                 </div>
+                <!-- Enlace al pie de página -->
                 <a href="footer.html"></a>
-            </div>
-            </div>
             </div>
         </section>
     </body>

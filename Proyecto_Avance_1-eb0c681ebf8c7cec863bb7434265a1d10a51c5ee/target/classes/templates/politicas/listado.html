@@ -2,14 +2,17 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
     <head th:replace="~{layout/plantilla :: head}">
+        <!-- Sección de encabezado reemplazada por el fragmento de encabezado de la plantilla -->
         <title>VillaGastronomica</title>
     </head>
     <body>
+        <!-- Sección de encabezado reemplazada por el fragmento de encabezado de la plantilla -->
         <header th:replace="~{layout/plantilla :: header}"/>
 
+        <!-- Sección de política de privacidad reemplazada por el fragmento de política de privacidad -->
         <section th:replace="~{politicas/Politica de privacidad :: Politica}"/>
 
+        <!-- Sección de pie de página reemplazada por el fragmento de pie de página de la plantilla -->
         <footer th:replace="~{layout/plantilla :: footer}"/>      
-      
     </body>
 </html>
