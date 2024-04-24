@@ -1,42 +1,62 @@
 package com.tienda.domain;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import java.io.Serializable;
-import java.util.List;
-import javax.validation.constraints.NotEmpty;
 import lombok.Data;
 
-@Data
 @Entity
-@Table(name = "usuario")
+@Data
+@Table(name = "usuarios")
 public class Usuario implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+
+    @Column(name = "id")
     private Long idUsuario;
 
-    @NotEmpty
-    private String username;
-    
-    @NotEmpty
-    private String password;
+    @Column(name = "nombre")
     private String nombre;
-    private String apellidos;
-    private String correo;
-    private String telefono;
-    private String rutaImagen;
-    private boolean activo;
 
-    @OneToMany
-    @JoinColumn(name = "id_usuario")
-    private List<Rol> roles;
-    
+    @Column(name = "apellido")
+    private String apellidos;
+
+    @Column(name = "correo")
+    private String correo;
+
+    @Column(name = "telefono")
+    private String telefono;
+
+    @Column(name = "nombre_usuario")
+    private String username;
+
+    @Column(name = "contrasena")
+    private String password;
+
+    @Column(name = "id_rol")
+    private int rol;
+
+    public Usuario() {
+    }
+
+    public Usuario(Long idUsuario, String nombre, String apellidos,
+            String correo, String telefono, String username, String password, int rol) {
+
+        this.idUsuario = idUsuario;
+        this.nombre = nombre;
+        this.apellidos = apellidos;
+        this.correo = correo;
+        this.telefono = telefono;
+        this.username = username;
+        this.password = password;
+        this.rol = rol;
+    }
+
 }

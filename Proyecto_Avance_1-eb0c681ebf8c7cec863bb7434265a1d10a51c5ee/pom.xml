@@ -99,6 +99,13 @@
             <version>5.1.0</version>
             <type>jar</type>
         </dependency>
+        <dependency>
+            <groupId>com.guicedee.services</groupId>
+            <artifactId>jakarta.mail</artifactId>
+            <version>1.2.2.1-jre17</version>
+            <scope>test</scope>
+            <type>jar</type>
+        </dependency>
     </dependencies>
     <build>
         <plugins>

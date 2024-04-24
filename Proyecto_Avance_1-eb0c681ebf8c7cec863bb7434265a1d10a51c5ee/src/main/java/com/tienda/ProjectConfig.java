@@ -9,11 +9,8 @@ import org.springframework.context.support.ResourceBundleMessageSource;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.web.SecurityFilterChain;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.web.servlet.LocaleResolver;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
@@ -22,36 +19,37 @@ import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
 import org.springframework.web.servlet.i18n.SessionLocaleResolver;
 
 @Configuration
-public class ProjectConfig implements WebMvcConfigurer{
+public class ProjectConfig implements WebMvcConfigurer {
+
     @Bean
-    public LocaleResolver localeResolver(){
+    public LocaleResolver localeResolver() {
         var slr = new SessionLocaleResolver();
         slr.setDefaultLocale(Locale.getDefault());
         slr.setLocaleAttributeName("session.current.locale");
-        slr.setTimeZoneAttributeName( "session.current.timezone");
+        slr.setTimeZoneAttributeName("session.current.timezone");
         return slr;
     }
-    
+
     @Bean
-    public LocaleChangeInterceptor localeChangeInterceptor(){
+    public LocaleChangeInterceptor localeChangeInterceptor() {
         var lci = new LocaleChangeInterceptor();
-        lci.setParamName ("lang");
+        lci.setParamName("lang");
         return lci;
     }
-    
+
     @Override
     public void addInterceptors(InterceptorRegistry registro) {
-        registro.addInterceptor (localeChangeInterceptor());
+        registro.addInterceptor(localeChangeInterceptor());
     }
-    
-    @Bean ("messageSource")
-    public MessageSource messageSource(){
-        ResourceBundleMessageSource messageSource= new ResourceBundleMessageSource ();
-        messageSource.setBasenames ( "messages");
+
+    @Bean("messageSource")
+    public MessageSource messageSource() {
+        ResourceBundleMessageSource messageSource = new ResourceBundleMessageSource();
+        messageSource.setBasenames("messages");
         messageSource.setDefaultEncoding("UTF-8");
         return messageSource;
     }
-    
+
     /* Los siguiente métodos son para implementar el tema de seguridad dentro del proyecto */
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
@@ -60,70 +58,56 @@ public class ProjectConfig implements WebMvcConfigurer{
         registry.addViewController("/login").setViewName("login");
         registry.addViewController("/registro/nuevo").setViewName("/registro/nuevo");
     }
-     
+
     @Bean
+   
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeHttpRequests((request) -> request
-                .requestMatchers("/","/index","/errores/**",
-                        "/carrito/**","/pruebas/**","/reportes/**",
-                        "/registro/**","/js/**","/webjars/**", "/static**")
-                        .permitAll()
+                .requestMatchers("/", "/index", "/errores/**",
+                        "/carrito/**", "/pruebas/**", "/reportes/**",
+                        "/registro/**", "/js/**", "/webjars/**", "/static**")
+                .permitAll()
                 .requestMatchers(
-                        "/producto/nuevo","/producto/guardar",
-                        "/producto/modificar/**","/producto/eliminar/**",
-                        "/categoria/nuevo","/categoria/guardar",
-                        "/categoria/modificar/**","/categoria/eliminar/**",  
-                        "/conozcanos/nuevo","/conozcanos/guardar",
-                        "/conozcanos/modificar/**","/conozcanos/eliminar/**",
-                        "/contactenos/nuevo","/contactenos/guardar",
-                        "/contactenos/modificar/**","/contactenos/eliminar/**",
-                        "/usuario/nuevo","/usuario/guardar",
-                        "/usuario/modificar/**","/usuario/eliminar/**",
-                        "/reportes/**"
+                        "/producto/nuevo", "/producto/guardar",
+                        "/producto/modificar/**", "/producto/eliminar/**",
+                        "/categoria/nuevo", "/categoria/guardar",
+                        "/categoria/modificar/**", "/categoria/eliminar/**",
+                        "/conozcanos/nuevo", "/conozcanos/guardar",
+                        "/conozcanos/modificar/**", "/conozcanos/eliminar/**",
+                        "/contactenos/nuevo", "/contactenos/guardar",
+                        "/contactenos/modificar/**", "/contactenos/eliminar/**",
+                        "/usuario/nuevo", "/usuario/guardar",
+                        "/usuario/modificar/**", "/usuario/eliminar/**",
+                        "/politica/nuevo", "/politica/guardar",
+                        "/politica/modificar/**", "/politica/eliminar/**",
+                        "/politicas/politica/**",
+                        "/reportes/**", "/usuario/listado", "/usuario/nuevo",
+                        "/usuario/guardar", "/usuario/eliminar/**", "/usuario/modificar/**",
+                        "/registro/recordarUsuario", "/registro/crearUsuario"
                 ).hasRole("ADMIN")
                 .requestMatchers(
+                        "/politicas/politica",
                         "/conozcanos/listado",
                         "/inicio/listado",
                         "/producto/listado",
                         "/categoria/listado",
                         "/contactenos/listado",
-                        "/usuario/listado"
+                        "/usuario/listado",
+                        "/politica/listado"
                 ).hasAnyRole("ADMIN", "VENDEDOR")
                 .requestMatchers("/facturar/carrito")
                 .hasRole("USER")
                 )
+                
                 .formLogin((form) -> form
                 .loginPage("/login").permitAll())
                 .logout((logout) -> logout.permitAll());
         return http.build();
     }
-
-/* El siguiente método se utiliza para completar la clase no es 
-    realmente funcional, la próxima semana se reemplaza con usuarios de BD */    
-    @Bean
-    public UserDetailsService users() {
-        UserDetails admin = User.builder()
-                .username("juan")
-                .password("{noop}123")
-                .roles("USER", "VENDEDOR", "ADMIN")
-                .build();
-        UserDetails sales = User.builder()
-                .username("rebeca")
-                .password("{noop}456")
-                .roles("USER", "VENDEDOR")
-                .build();
-        UserDetails user = User.builder()
-                .username("pedro")
-                .password("{noop}789")
-                .roles("USER")
-                .build();
-        return new InMemoryUserDetailsManager(user, sales, admin);
-    }
-    
     @Autowired
     private UserDetailsService userDetailsService;
-    
+
     @Autowired
     public void configurerGlobal(AuthenticationManagerBuilder build) throws Exception {
         build.userDetailsService(userDetailsService).passwordEncoder(new BCryptPasswordEncoder());

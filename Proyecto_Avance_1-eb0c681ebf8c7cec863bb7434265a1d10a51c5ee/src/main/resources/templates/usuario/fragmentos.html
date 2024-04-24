@@ -1,20 +1,14 @@
-<!--
-Este archivo HTML forma parte de la interfaz de usuario de TechShop, un sistema de gestión de usuarios.
--->
-
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
     <head th:replace="~{layout/plantilla :: head}">
-        <!-- La etiqueta 'head' contiene la información de configuración y metadatos del documento. -->
         <title>TechShop</title>
     </head>
     <body>
-        <!-- Sección para crear el botón de agregar usuario -->
-        <section th:fragment="botonesAgregar" class="py-4 mb-4 bg-light">
-            <!-- Este fragmento muestra un botón para agregar usuarios, visible solo para administradores. -->
-            <div class="container" sec:authorize="hasRole('ROLE_ADMIN')">
+        <!-- 1 Sección para crear el boton de agregar... llamará a una ventana modal-->
+        <section th:fragment="botonesAgregar" class="py-4 mb-4">
+            <div class="container">
                 <div class="row">
                     <div class="col-md-3">   
                         <button 
@@ -22,25 +16,22 @@ Este archivo HTML forma parte de la interfaz de usuario de TechShop, un sistema 
                             class="btn btn-primary btn-block" 
                             data-bs-toggle="modal" 
                             data-bs-target="#agregarUsuario">
-                            <i class="fas fa-plus"></i> [[#{usuario.agregar}]]
+                            <i class="fas fa-plus"></i>
                         </button>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Fragmento para agregar usuario, es la ventana modal -->
+        <!-- 2 Fragmento para agregar usuario, es la ventana modal -->
         <section th:fragment="agregarUsuario">
-            <!-- Este fragmento define una ventana modal para agregar usuarios. -->
             <div id="agregarUsuario" 
                  class="modal fade" 
                  tabindex="-1" 
                  aria-labelledby="exampleModalLabel" 
                  aria-hidden="true">
-                <!-- Contenido de la ventana modal -->
                 <div class="modal-dialog modal-md">
                     <div class="modal-content">
-                        <!-- Cabecera de la ventana modal -->
                         <div class="modal-header bg-info text-white">
                             <h5 class="modal-title">[[#{usuario.agregar}]]</h5>
                             <button type="button" 
@@ -48,17 +39,44 @@ Este archivo HTML forma parte de la interfaz de usuario de TechShop, un sistema 
                                     data-bs-dismiss="modal" 
                                     aria-label="Close"></button>
                         </div> 
-                        <!-- Formulario para agregar usuarios -->
                         <form th:action="@{/usuario/guardar}" th:object="${usuario}"
                               method="POST" class="was-validated"
                               enctype="multipart/form-data">
-                            <!-- Campos del formulario -->
                             <div class="modal-body">
-                                <!-- Campos para nombre, apellidos, username, etc. -->
+                                <div class="mb-3">
+                                    <label for="nombre">[[#{usuario.nombre}]]</label>
+                                    <input type="text" class="form-control" name="nombre" required="true"/>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="apellidos">[[#{usuario.apellidos}]]</label>
+                                    <input type="text" class="form-control" name="apellidos" required="true"/>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="username">[[#{usuario.username}]]</label>
+                                    <input type="text" class="form-control" name="username" required="true"/>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="password">[[#{usuario.password}]]</label>
+                                    <input type="password" class="form-control" name="password" required="true"/>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="email">[[#{usuario.correo}]]</label>
+                                    <input type="email" class="form-control" name="correo" required="true"/>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="telefono">[[#{usuario.telefono}]]</label>
+                                    <input type="tel" class="form-control" name="telefono"/>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="rol">[[#{usuario.rol}]]</label>
+                                    <select class="form-control" name="rol" id="rol">
+                                        <option value="1">Admin</option>
+                                        <option value="2">User</option>
+                                    </select>
+                                </div>
                             </div>
-                            <!-- Botón para guardar el usuario -->
                             <div class="modal-footer">
-                                <button class="btn btn-primary" type="submit">Guardar</button>
+                                <button class="btn btn-primary" type="submit">Save</button>
                             </div>
                         </form>
                     </div>
@@ -66,27 +84,132 @@ Este archivo HTML forma parte de la interfaz de usuario de TechShop, un sistema 
             </div>
         </section>
 
-        <!-- Sección principal para mostrar la información de la entidad usuario -->
-        <section th:fragment="listadoUsuarios" id="usuarios">
-            <!-- Esta sección muestra un listado de usuarios con sus datos básicos. -->
+        <!-- 3 Sección principal para mostrar la informaccion de la entidad usuario -->
+        <section th:fragment="listadoUsuario" id="usuarios">
+            <section th:replace="~{usuario/fragmentos :: botonesAgregar}"/>
             <div class="container">
-                <!-- Contenido del listado de usuarios -->
+                <div class="row">
+                    <div class="col-md-9">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4>[[#{usuario.listado}]]</h4></div>
+                            <div th:if="${usuarios != null and !usuarios.empty}">
+                                <table class="table table-striped table-hover">
+                                    <thead class="table-dark">
+                                        <tr><th>#</th>
+                                            <th>[[#{usuario.username}]]</th>
+                                            <th>[[#{usuario.nombre}]]</th>
+                                            <th>[[#{usuario.apellidos}]]</th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr th:each="usuario, contador : ${usuarios}">
+                                            <td>[[${contador.count}]]</td>
+                                            <td>[[${usuario.username}]]</td>
+                                            <td>[[${usuario.nombre}]]</td>
+                                            <td>[[${usuario.apellidos}]]</td>
+                                            <td>
+                                                <a th:href="@{/usuario/eliminar/}+${usuario.idUsuario}"
+                                                   class="btn btn-danger">
+                                                    <i class="fas fa-trash"></i> [[#{accion.eliminar}]]</a>
+                                                <a th:href="@{/usuario/modificar/}+${usuario.idUsuario}"
+                                                   class="btn btn-success">
+                                                    <i class="fas fa-pencil"></i> [[#{accion.actualizar}]]</a></td></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="text-center p-2" th:if="${usuarios == null or usuarios.empty}">
+                                <span>[[#{lista.vacia}]]</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
 
-        <!-- Fragmento para editar usuario -->
+        <!-- 4 Fragmento que se utiliza en la página modifca.html -->
         <section th:fragment="editarUsuario">
-            <!-- Este fragmento define un formulario para editar la información de un usuario. -->
             <div class="row">
-                <!-- Contenido del formulario de edición -->
+                <div class="col-md-2"></div>
+                <div class="col-md-8">
+                    <form method="POST"
+                          th:action="@{/usuario/guardar}" th:object="${usuario}"
+                          class="was-validated"
+                          enctype="multipart/form-data">
+                        <input type="hidden" name="idUsuario" th:field="*{idUsuario}"/>
+                        <section th:replace="~{usuario/fragmentos :: botonesEditar}"/>
+                        <div id=details>
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="card">
+                                            <div class="card-header">
+                                                <h4>[[#{accion.actualizar}]]</h4>
+                                            </div>
+                                            <div class="card-body">
+                                                <div class="mb-3">
+                                                    <label for="nombre">[[#{usuario.nombre}]]</label>
+                                                    <input type="text" class="form-control" name="nombre" th:field="*{nombre}" required="true"/>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="apellidos">[[#{usuario.apellidos}]]</label>
+                                                    <input type="text" class="form-control" name="apellidos" th:field="*{apellidos}" required="true"/>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="username">[[#{usuario.username}]]</label>
+                                                    <input type="text" class="form-control" name="username" th:field="*{username}" required="true"/>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="password">[[#{usuario.password}]]</label>
+                                                    <input type="password" class="form-control" name="password" th:field="*{password}" required="true"/>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="email">[[#{usuario.correo}]]</label>
+                                                    <input type="email" class="form-control" name="correo" th:field="*{correo}" required="true"/>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="telefono">[[#{usuario.telefono}]]</label>
+                                                    <input type="tel" class="form-control" name="telefono" th:field="*{telefono}" required="true"/>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="rol">[[#{usuario.rol}]]</label>
+                                                    <select class="form-control" name="rol" id="rol" required="true">
+                                                        <option value="1">Admin</option>
+                                                        <option value="2">User</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                    </form>
+                </div>
             </div>
         </section>
-
-        <!-- Fragmento para botones de edición -->
+        
+        <!-- 5 Fragmento que se utiliza en el fragmento anterior -->
         <section th:fragment="botonesEditar">
-            <!-- Este fragmento define los botones de acción (guardar, eliminar, etc.) para el formulario de edición. -->
-            <div class="container py-4 mb-4 bg-light">
-                <!-- Botones de acción -->
+            <div class="container py-4 mb-4 ">
+                <div class="row">
+                    <div class="col-md-4 d-grid">
+                        <a th:href="@{/usuario/listado}" class="btn btn-primary">
+                            <i class="fas fa-arrow-left"></i> 
+                        </a>
+                    </div>
+                    <div class="col-md-4 d-grid">                                
+                        <a th:href="@{/usuario/eliminar/}+${usuario.idUsuario}"
+                           class="btn btn-danger">
+                            <i class="fas fa-trash"></i> 
+                        </a>
+                    </div>
+                    <div class="col-md-4 d-grid" >
+                        <button type="submit" class="btn btn-success">
+                            <i class="fas fa-check"></i> 
+                        </button>
+                    </div>
+                </div>
             </div>
         </section>
     </body>
