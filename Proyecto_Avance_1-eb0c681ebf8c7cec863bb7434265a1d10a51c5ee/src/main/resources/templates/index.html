@@ -2,14 +2,50 @@
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns="http://www.w3.org/1999/xhtml">
     <head th:replace="~{layout/plantilla :: head}">
-        <!-- La etiqueta head contiene metadatos y enlaces a recursos externos -->
-        <title>VillaGastronomica</title> <!-- Título de la página -->
+        <title>TechShop</title>
     </head>
     <body>
-         <header th:replace="~{layout/plantilla :: header}"/>
-         <!-- La etiqueta header contiene la cabecera de la página -->
-         
-         <footer th:replace="~{layout/plantilla :: footer}"/>
-         <!-- La etiqueta footer contiene el pie de página -->
+        <header th:replace="~{layout/plantilla :: header}"/>
+        <section id="welcome">
+            <h1>Bienvenidos a Villa Gastronómica</h1>
+            <p>Descubre un mundo de sabores donde la tradición se encuentra con la innovación.</p>
+        </section>
+
+        <section id="welcome">
+            <h1>Bienvenidos a Villa Gastronómica</h1>
+            <p>Descubre un mundo de sabores donde la tradición se encuentra con la innovación.</p>
+        </section>
+
+        <section id="about">
+            <h2>Sobre Nosotros</h2>
+            <p>En Villa Gastronómica, fusionamos sabores locales con técnicas culinarias internacionales para ofrecerte una experiencia gastronómica única. Nuestro compromiso con la excelencia y la calidad nos hace el destino predilecto para quienes buscan disfrutar de la buena cocina en un ambiente acogedor y elegante.</p>
+        </section>
+
+        <section id="philosophy">
+            <h2>Nuestra Filosofía</h2>
+            <p>Creamos platos que no solo satisfacen el paladar, sino que también alimentan el alma. Nuestra filosofía se centra en el uso de ingredientes frescos y locales, apoyando a los agricultores y proveedores de nuestra comunidad.</p>
+        </section>
+
+        <section id="services">
+            <h2>Servicios</h2>
+            <ul>
+                <li>Disfruta la comida hasta tu casa</li>
+                <li>Experiencias gastronómicas temáticas mensuales</li>
+            </ul>
+        </section>
+
+        <section id="testimonials">
+            <h2>Testimonios</h2>
+            <p>"Nunca había experimentado un servicio tan personalizado y platos tan exquisitos. ¡Villa Gastronómica realmente hace honor a su nombre!" - María Fernández</p>
+            <p>"Cada visita es una nueva aventura. Los eventos temáticos son algo que no te puedes perder." - Jorge Limón</p>
+        </section>
+
+        <section id="contact">
+            <h2>Contacto</h2>
+            <p>Teléfono: +8433 4570</p>
+            <p>Email: info@villagastronomica.com</p>
+        </section>
+        <footer th:replace="~{layout/plantilla :: footer}"/>
     </body>
 </html>
+

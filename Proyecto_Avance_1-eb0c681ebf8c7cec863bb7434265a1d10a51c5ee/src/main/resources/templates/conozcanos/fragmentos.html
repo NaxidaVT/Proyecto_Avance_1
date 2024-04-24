@@ -5,7 +5,7 @@
         <title>VillaGastronomica</title>
         <meta charset="UTF-8">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                <link href="/css/Conozcanos.css" rel="stylesheet" type="text/css"/>
+                <link th:href="@{/css/Conozcanos.css}" rel="stylesheet" type="text/css"/>
                 </head>
                 <body>
                     <section th:fragment="ConozcanosInformacion" id="conozcanos">
@@ -95,20 +95,5 @@
                                         ></iframe>
                                 </div>
                                 </section>
-                                <section th:fragment="main-page">
-                                    <!-- Video en la esquina inferior derecha -->
-                                    <div class="corner-video">
-                                        <iframe src="https://www.youtube.com/watch?v=4j1CXeQNlKk&ab_channel=TeRecomiendoAQU%C3%8D" title="YouTube video" allowfullscreen></iframe>
-                                    </div>
-                                    <!-- Contenedor para los otros videos (elimina las secciones de los otros dos videos) -->
-                                    <div class="container-fluid video-container">
-                                        <div class="row">
-                                            <!-- Deja solo el contenedor vacío para mantener la estructura -->
-                                            <div class="col-lg-4"></div>
-                                            <div class="col-lg-4"></div>
-                                        </div>
-                                    </div>
-                                </section>
-
                                 </body>
                                 </html>

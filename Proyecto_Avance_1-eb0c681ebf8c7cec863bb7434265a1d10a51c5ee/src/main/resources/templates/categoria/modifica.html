@@ -2,20 +2,14 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
     <head th:replace="~{layout/plantilla :: head}">
-        <!-- La etiqueta head contiene metadatos y enlaces a recursos externos -->
-        <title>VillaGastronomica</title> <!-- Título de la página -->
+        <title>TechShop</title>
     </head>
     <body>
-        <!-- La etiqueta body contiene el contenido principal de la página -->
-        
         <header th:replace="~{layout/plantilla :: header}"/>
-        <!-- Encabezado de la página -->
-        
+
         <section th:replace="~{categoria/fragmentos :: editarCategoria}"/>
-        <!-- Sección para editar categoría -->
-        
+
         <footer th:replace="~{layout/plantilla :: footer}"/>      
-        <!-- Pie de página -->
       
     </body>
 </html>

@@ -1,18 +1,14 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
-    
     <head th:replace="~{layout/plantilla :: head}">
         <title>VillaGastronomica</title>
     </head>
     <body>
-        <!-- Encabezado -->
         <header th:replace="~{layout/plantilla :: header}"/>
 
-        <!-- Sección de información -->
         <section th:replace="~{conozcanos/fragmentos :: ConozcanosInformacion}"/>
 
-        <!-- Pie de página -->
         <footer th:replace="~{layout/plantilla :: footer}"/>      
       
     </body>

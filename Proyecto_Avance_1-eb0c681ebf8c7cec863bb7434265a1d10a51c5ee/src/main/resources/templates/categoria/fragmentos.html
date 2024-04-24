@@ -3,27 +3,19 @@
       xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
     <head th:replace="~{layout/plantilla :: head}">
-        <!-- La etiqueta head contiene metadatos y enlaces a recursos externos -->
-        <title>VillaGastronomica</title> <!-- Título de la página -->
+        <title>TechShop</title>
     </head>
     <body>
-        <!-- La etiqueta body contiene el contenido principal de la página -->
-
-        <!-- 1 Sección para crear el botón de agregar... llamará a una ventana modal-->
+        <!-- 1 Sección para crear el boton de agregar... llamará a una ventana modal-->
         <section th:fragment="botonesAgregar" class="py-4 mb-4 bg-light">
-            <!-- Sección para botones de agregar -->
             <div class="container" sec:authorize="hasRole('ROLE_ADMIN')">
-                <!-- Contenedor -->
                 <div class="row">
-                    <!-- Fila -->
                     <div class="col-md-3">   
-                        <!-- Columna -->
                         <button 
                             type="button" 
                             class="btn btn-primary btn-block" 
                             data-bs-toggle="modal" 
                             data-bs-target="#agregarCategoria">
-                            <!-- Botón de agregar -->
                             <i class="fas fa-plus"></i> [[#{categoria.agregar}]]
                         </button>
                     </div>
@@ -31,29 +23,22 @@
             </div>
         </section>
 
-        <!-- 2 Fragmento para agregar categoría, es la ventana modal -->
+        <!-- 2 Fragmento para agregar categoria, es la ventana modal -->
         <section th:fragment="agregarCategoria">
-            <!-- Sección para agregar categoría -->
             <div id="agregarCategoria" 
                  class="modal fade" 
                  tabindex="-1" 
                  aria-labelledby="exampleModalLabel" 
                  aria-hidden="true">
-                <!-- Ventana modal -->
                 <div class="modal-dialog modal-md">
-                    <!-- Diálogo modal -->
                     <div class="modal-content">
-                        <!-- Contenido modal -->
                         <div class="modal-header bg-info text-white">
-                            <!-- Encabezado modal -->
                             <h5 class="modal-title">[[#{categoria.agregar}]]</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div> 
                         <form th:action="@{/categoria/guardar}" th:object="${categoria}"
                               method="POST" class="was-validated" enctype="multipart/form-data">
-                            <!-- Formulario de guardar categoría -->
                             <div class="modal-body">
-                                <!-- Cuerpo modal -->
                                 <div class="mb-3">
                                     <label for="descripcion">[[#{categoria.descripcion}]]</label>
                                     <input type="text" class="form-control" name="descripcion" required="true"/>
@@ -69,7 +54,6 @@
                                 </div>
                             </div>
                             <div class="modal-footer">
-                                <!-- Pie modal -->
                                 <button class="btn btn-primary" type="submit">Guardar</button>
                             </div>
                         </form>
@@ -78,34 +62,24 @@
             </div>
         </section>
 
-        <!-- 3 Sección principal para mostrar la información de la entidad categoría -->
+        <!-- 3 Sección principal para mostrar la informaccion de la entidad categoria -->
         <section th:fragment="listadoCategorias" id="categorias">
-            <!-- Sección para listar categorías -->
             <div class="container">
-                <!-- Contenedor -->
                 <div class="row">
-                    <!-- Fila -->
                     <div class="col-md-9">
-                        <!-- Columna -->
                         <div class="card">
-                            <!-- Tarjeta -->
                             <div class="card-header">
-                                <!-- Encabezado tarjeta -->
                                 <h4>[[#{categoria.listado}]]</h4>
                             </div>
                             <div th:if="${categorias != null and !categorias.empty}">
-                                <!-- Lista de categorías -->
                                 <table class="table table-striped table-hover">
-                                    <!-- Tabla -->
                                     <thead class="table-dark">
-                                        <!-- Encabezado tabla -->
                                         <tr><th>#</th>
                                             <th>[[#{categoria.descripcion}]]</th>
                                             <th>[[#{categoria.activo}]]</th>
                                             <th></th></tr>
                                     </thead>
                                     <tbody>
-                                        <!-- Cuerpo tabla -->
                                         <tr th:each="categoria, contador : ${categorias}">
                                             <td>[[${contador.count}]]</td>
                                             <td>[[${categoria.descripcion}]]</td>
@@ -121,63 +95,44 @@
                                 </table>
                             </div>
                             <div class="text-center p-2" th:if="${categorias == null or categorias.empty}">
-                                <!-- Mensaje si no hay categorías -->
                                 <span>[[#{lista.vacia}]]</span>
                             </div>
                         </div>
                     </div>
-                    <!-- Columna -->
                     <div class="col-md-3">
-                        <!-- Columna -->
                         <div class="card text-center bg-success text-white mb-3">
-                            <!-- Tarjeta -->
                             <div class="card-body">
-                                <!-- Cuerpo tarjeta -->
                                 <h3>[[#{categoria.total}]]</h3>
                                 <h4 class="fs-2"><i class="fas fa-users"></i> [[${totalCategorias}]]</h4>
                             </div>
                         </div>
                     </div>
-                    <!-- Columna -->
                 </div>
-                <!-- Fila -->
             </div>
-            <!-- Contenedor -->
         </section>
 
         <!-- 4 Fragmento que se utiliza en la página modifca.html -->
         <section th:fragment="editarCategoria">
-            <!-- Sección para editar categoría -->
             <div class="row">
-                <!-- Fila -->
                 <div class="col-md-2"></div>
                 <div class="col-md-8">
-                    <!-- Columna -->
                     <form method="POST"
                           th:action="@{/categoria/guardar}" 
                           th:object="${categoria}"
                           class="was-validated"                          
                           enctype="multipart/form-data">
-                        <!-- Formulario de editar categoría -->
                         <input type="hidden" name="idCategoria" th:field="*{idCategoria}"/>
                         <input type="hidden" name="rutaImagen" th:field="*{rutaImagen}"/>
                         <section th:replace="~{categoria/fragmentos :: botonesEditar}"/>
                         <div id=details>
-                            <!-- Detalles -->
                             <div class="container">
-                                <!-- Contenedor -->
                                 <div class="row">
-                                    <!-- Fila -->
                                     <div class="col">
-                                        <!-- Columna -->
                                         <div class="card">
-                                            <!-- Tarjeta -->
                                             <div class="card-header">
-                                                <!-- Encabezado tarjeta -->
                                                 <h4>[[#{accion.actualizar}]]</h4>
                                             </div>
                                             <div class="card-body">
-                                                <!-- Cuerpo tarjeta -->
                                                 <div class="mb-3">
                                                     <label for="descripcion">[[#{categoria.descripcion}]]</label>
                                                     <input type="text" class="form-control" 
@@ -203,36 +158,27 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
                     </form>
                 </div>
             </div>
         </section>
         <!-- 5 Fragmento que se utiliza en el fragmento anterior -->
         <section th:fragment="botonesEditar">
-            <!-- Sección para botones de editar -->
             <div class="container py-4 mb-4 bg-light">
-                <!-- Contenedor -->
                 <div class="row">
-                    <!-- Fila -->
                     <div class="col-md-4 d-grid">
-                        <!-- Columna -->
                         <a th:href="@{/categoria/listado}" class="btn btn-primary">
-                            <!-- Botón de regresar -->
                             <i class="fas fa-arrow-left"></i> [[#{accion.regresar}]]
                         </a>
                     </div>
                     <div class="col-md-4 d-grid">                                
                         <a th:href="@{/categoria/eliminar/}+${categoria.idCategoria}"
                            class="btn btn-danger">
-                            <!-- Botón de eliminar -->
                             <i class="fas fa-trash"></i> [[#{accion.eliminar}]]
                         </a>
                     </div>
                     <div class="col-md-4 d-grid">
-                        <!-- Columna -->
                         <button type="submit" class="btn btn-success">
-                            <!-- Botón de guardar -->
                             <i class="fas fa-check"></i> [[#{accion.guardar}]]
                         </button>
                     </div>

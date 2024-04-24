@@ -1,80 +1,45 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://wwww.thymeleaf.org">
     <head th:replace="~{layout/plantilla :: head}">
-        <!-- La etiqueta head contiene metadatos y enlaces a recursos externos -->
-        <title>VillaGastronomica</title> <!-- Título de la página -->
-        <meta charset="UTF-8"/> <!-- Codificación de caracteres -->
+        <title>Villa </title>
+        <meta charset="UTF-8"/>
     </head>
     <body>
-        <!-- La etiqueta body contiene el contenido principal de la página -->
-        <div class="container my-5">
-            <!-- Contenedor principal de la página -->
-            <div class="row align-items-center">
-                <!-- Fila de la cuadrícula de Bootstrap, elementos alineados verticalmente -->
-                <div class="col-md-3"></div> <!-- Columna vacía -->
+        <header th:replace="~{layout/plantilla :: header}"/>
+        <div class="container-fluid my-8">
+            <div class="row align-items-center"> 
+                <div class="col-md-3"></div>
                 <div class="col-md-6">
-                    <!-- Columna principal de tamaño medio -->
-                    <div class="card">
-                        <!-- Tarjeta -->
-                        <div class="card-header bg-success"><h2>[[#{login.login}]]</h2></div>
-                        <!-- Encabezado de la tarjeta -->
-                        <div class="card-body">
-                            <!-- Cuerpo de la tarjeta -->
+                    <div class="card shadow border-primary bg-primary text-white">
+                        <div class="card-header bg-morado-claro"><h2>[[#{inicio.inicio}]]</h2></div>
+                        <div class="card-body custom-card-body">
                             <form method="POST" th:action="@{/login}">
-                                <!-- Formulario de inicio de sesión -->
                                 <div class="form-group row my-3">
-                                    <!-- Grupo de formulario -->
-                                    <label class="col-md-5 my-auto" for="username"><i class="fas fa-user-lock"></i>[[#{login.username}]]:</label>
-                                    <!-- Etiqueta del campo de usuario -->
+                                    <label class="col-md-5 my-auto" for="username"><i class="fas fa-user-lock"></i>[[#{inicio.nombreusuario}]]:</label>
                                     <div class="col-md-7 my-auto">
-                                        <!-- Campo de entrada de usuario -->
-                                        <input class="form-control" type="text" name="username" id="username"/>
-                                        <!-- Entrada de usuario -->
-                                    </div>
-                                </div>
-                                <!-- Fin del grupo de formulario -->
+                                        <input class="form-control" type="text" name="username" id="username"/></div></div>
                                 <div class="form-group row my-3">
-                                    <!-- Otro grupo de formulario -->
-                                    <label class="col-md-5 my-auto" for="password"><i class="fas fa-key"></i>[[#{login.password}]]</label>
-                                    <!-- Etiqueta del campo de contraseña -->
-                                    <div class="col-md-7 my-auto">
-                                        <!-- Campo de entrada de contraseña -->
-                                        <input class="form-control" type="password" name="password" id="password"/>
-                                        <!-- Entrada de contraseña -->
-                                    </div>
-                                </div>
-                                <!-- Fin del grupo de formulario -->
+                                    <label class="col-md-5 my-auto" for="password"><i class="fas fa-key"></i>[[#{inicio.Contraseña}]]</label>
+                                    <div class="col-md-7 my-auto"><input class="form-control" type="password" name="password" id="password"/></div></div>
                                 <div class="card-footer col text-center">
-                                    <!-- Pie de tarjeta -->
-                                    <button class="btn btn-primary">
-                                        <!-- Botón de registro -->
-                                        <a th:href="@{/registro/nuevo}" class="btn"><i class="fas fa-user-plus"></i> [[#{accion.registrar}]]</a>
-                                    </button>
-                                    <button class="btn btn-info">
-                                        <!-- Botón de recordar contraseña -->
-                                        <a th:href="@{/registro/recordar}" class="btn"><i class="fas fa-envelope"></i> [[#{accion.recordar}]]</a>
-                                    </button>
-                                    <button class="btn btn-success" type="submit">
-                                        <!-- Botón de inicio de sesión -->
-                                        <span class="btn"><i class="fas fa-sign-in-alt"></i> [[#{login.login}]]</span>
+                                    <button class="btn btn-primary" >
+                                     <a th:href="@{/registro/nuevo}" class="btn btn-warning"><i class="fas fa-user-plus"></i> [[#{accion.registrarusuario}]]</a></button>
+                                    <button class="btn btn-warning" >                                       
+                                        <a th:href="@{/registro/recordar}" class="btn"><i class="fas fa-envelope"></i> [[#{accion.recordarcuenta}]]</a></button>
+                                    <button class="btn btn-purple" type="submit" style="background-color: white; color: purple;">
+                                    <span class="btn"><i class="fas fa-sign-in-alt" style="color: purple;"></i> [[#{inicio.inicio}]]</span>
                                     </button>
                                 </div>
-                                <!-- Fin del pie de tarjeta -->
-                            </form>
-                            <!-- Fin del formulario -->
+                            </form>                            
                         </div>
-                        <!-- Fin del cuerpo de la tarjeta -->
                     </div>
-                    <!-- Fin de la tarjeta -->
                     <div th:if="${param.error != null}">
-                        <!-- Mensaje de error -->
-                        <h3>[[#{error.login}]]</h3>
+                        <h3>[[#{error.inicio}]]</h3>
                     </div>
                 </div>
-                <!-- Fin de la columna principal -->
-            </div>
-            <!-- Fin de la fila de la cuadrícula -->
+            </div>           
         </div>
-        <!-- Fin del contenedor principal -->
+        <footer th:replace="~{layout/plantilla :: footer}"/>
     </body>
 </html>

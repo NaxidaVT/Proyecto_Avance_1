@@ -2,17 +2,14 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
     <head th:replace="~{layout/plantilla :: head}">
-        <!-- Título de la página -->
-        <title>VillaGastronomica</title>
+        <title>TechShop</title>
     </head>
     <body>
-        <!-- Incluir el encabezado desde la plantilla -->
         <header th:replace="~{layout/plantilla :: header}"/>
 
-        <!-- Incluir la sección de mapa desde los fragmentos -->
         <section th:replace="~{mapa/fragmentos :: mapa}"/>
 
-        <!-- Incluir el pie de página desde la plantilla -->
         <footer th:replace="~{layout/plantilla :: footer}"/>      
+
     </body>
 </html>
