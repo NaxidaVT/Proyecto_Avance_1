@@ -1,42 +1,36 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" <!-- Espacio de nombres predeterminado -->
-      xmlns:th="http://www.thymeleaf.org"> <!-- Espacio de nombres para Thymeleaf -->
-      <head th:replace="~{layout/plantilla :: head}"> <!-- Reemplaza la sección head con el contenido de la plantilla layout/plantilla -->
-        <title>VillaGastronomica</title> <!-- Título de la página -->
-        <meta charset="UTF-8"> <!-- Codificación de caracteres -->
-            <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Metaetiqueta para diseño responsivo -->
-                <link th:href="@{/css/Inicio.css}" rel="stylesheet" type="text/css" /> <!-- Enlace a hoja de estilos CSS -->
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="~{layout/plantilla :: head}">
+        <title>VillaGastronomica</title>
+        <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <link th:href="@{/css/Inicio.css}" rel="stylesheet" type="text/css" />
                 </head>
                 <body>
-                    <section th:fragment="BarraEnMedio" id="inicio"> <!-- Fragmento para la sección principal -->
-                        <div class="container"> <!-- Contenedor principal -->
-                            <div class="row justify-content-center"> <!-- Fila con contenido justificado en el centro -->
-                                <div class="col-md-3"> <!-- Columna de tamaño medio -->
-                                    <div class="text-center"> <!-- Contenido centrado -->
-                                        <p>
-                                            DomJulioCoffe es una vibrante y acogedora cafetería virtual que te transporta a un mundo de aromas tentadores y sabores exquisitos 
-                                            desde la comodidad de tu hogar. A través de su plataforma en línea, DomJulioCoffe te invita a explorar una amplia selección de 
-                                            cafés artesanales, tés aromáticos y delicias horneadas con solo unos pocos clics.
-                                        </p> <!-- Párrafo de texto -->
-                                        <button 
-                                            type="button" 
-                                            class="btn" id="previousBtn" <!-- Botón anterior -->
-                                            style="background-color: #4cb6ac;"> <!-- Estilo de fondo -->
-                                            <i class="fas"></i> [[#{inicio.atras}]] <!-- Texto traducible -->
-                                        </button>
-                                        <button
-                                            type="button" 
-                                            class="btn" id="nextBtn" <!-- Botón siguiente -->
-                                            style="background-color: #4cb6ac;"> <!-- Estilo de fondo -->
-                                            <i class="fas"></i> [[#{inicio.siguiente}]] <!-- Texto traducible -->
-                                        </button>
-                                    </div>
+                    <section th:fragment="BarraEnMedio" id="inicio">
+                        <div class="container">
+                            <div class="row justify-content-center">
+                                <div class="col-md-6 text-center">
+                                    <p id="mensajeRestaurante">
+                                        DomJulioCoffe es una vibrante y acogedora cafetería virtual que te transporta a un mundo de aromas tentadores y sabores exquisitos 
+                                        desde la comodidad de tu hogar. A través de su plataforma en línea, DomJulioCoffe te invita a explorar una amplia selección de 
+                                        cafés artesanales, tés aromáticos y delicias horneadas con solo unos pocos clics.
+                                    </p>
+                                    <p id="mensajeRestaurante">
+                                        "Mexican Punchis es un restaurante que te sumerge en la rica y variada cultura culinaria de México.
+                                        Con sus auténticos platos y sabores tradicionales, Mexican Punchis te ofrece una experiencia gastronómica única que te transportará a
+                                        las calles de México con cada bocado.
+
+                                    </p>
+                                    <button type="button" class="btn" id="previousBtn" style="background-color: #4cb6ac;" onclick="mostrarMensajeAnterior()">
+                                        <i class="fas"></i> [[#{inicio.atras}]]
+                                    </button>
+                                    <button type="button" class="btn" id="nextBtn" style="background-color: #4cb6ac;" onclick="mostrarMensajeSiguiente()">
+                                        <i class="fas"></i> [[#{inicio.siguiente}]]
+                                    </button>
                                 </div>
                             </div>
-                            <script>
-                                // Definición de objetos y funciones JavaScript para mostrar contenido dinámico
-                            </script>
                         </div>
-                    </section>
+                    </section>              
                 </body>
                 </html>

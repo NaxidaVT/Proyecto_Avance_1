@@ -60,13 +60,13 @@ public class ProjectConfig implements WebMvcConfigurer {
     }
 
     @Bean
-   
+
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeHttpRequests((request) -> request
                 .requestMatchers("/", "/index", "/errores/**",
                         "/carrito/**", "/pruebas/**", "/reportes/**",
-                        "/registro/**", "/js/**", "/webjars/**", "/static**")
+                        "/registro/**", "/js/**", "/webjars/**", "/static/**", "/error")
                 .permitAll()
                 .requestMatchers(
                         "/producto/nuevo", "/producto/guardar",
@@ -82,9 +82,9 @@ public class ProjectConfig implements WebMvcConfigurer {
                         "/politica/nuevo", "/politica/guardar",
                         "/politica/modificar/**", "/politica/eliminar/**",
                         "/politicas/politica/**",
-                        "/reportes/**", "/usuario/listado", "/usuario/nuevo",
-                        "/usuario/guardar", "/usuario/eliminar/**", "/usuario/modificar/**",
-                        "/registro/recordarUsuario", "/registro/crearUsuario"
+                        "/reportes/**", "/usuario/listado**", "/usuario/nuevo/**",
+                        "/usuario/guardar/**", "/usuario/eliminar/**", "/usuario/modificar/**",
+                        "/registro/recordarUsuario/**", "/registro/crearUsuario/**", "/politicas/listado/**"
                 ).hasRole("ADMIN")
                 .requestMatchers(
                         "/politicas/politica",
@@ -99,7 +99,6 @@ public class ProjectConfig implements WebMvcConfigurer {
                 .requestMatchers("/facturar/carrito")
                 .hasRole("USER")
                 )
-                
                 .formLogin((form) -> form
                 .loginPage("/login").permitAll())
                 .logout((logout) -> logout.permitAll());

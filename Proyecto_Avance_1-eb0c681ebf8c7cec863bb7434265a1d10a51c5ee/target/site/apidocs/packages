@@ -1,0 +1,6 @@
+com.tienda.controller
+com.tienda.dao
+com.tienda.domain
+com.tienda
+com.tienda.service
+com.tienda.service.impl
